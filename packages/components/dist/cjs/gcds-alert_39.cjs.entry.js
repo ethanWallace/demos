@@ -9576,13 +9576,22 @@ const GcdsTable = class {
     }
     onPageSizeChange(newSize) {
         var _a, _b, _c, _d;
-        this.paginationState = {
-            pageIndex: this.paginationState.pageIndex + 1 >
-                Math.ceil(((_c = (_b = (_a = this.table) === null || _a === void 0 ? void 0 : _a.getPreFilteredRowModel()) === null || _b === void 0 ? void 0 : _b.rows.length) !== null && _c !== void 0 ? _c : 0) / newSize)
-                ? 0
-                : this.paginationState.pageIndex,
-            pageSize: newSize === 0 ? Number.MAX_SAFE_INTEGER : newSize,
-        };
+        const totalRows = (_c = (_b = (_a = this.table) === null || _a === void 0 ? void 0 : _a.getPreFilteredRowModel()) === null || _b === void 0 ? void 0 : _b.rows.length) !== null && _c !== void 0 ? _c : 0;
+        if (newSize === 0) {
+            this.paginationState = {
+                pageIndex: 0,
+                pageSize: totalRows === 0 ? 1 : totalRows,
+            };
+        }
+        else {
+            this.paginationState = {
+                pageIndex: this.paginationState.pageIndex + 1 >
+                    Math.ceil(totalRows / newSize)
+                    ? 0
+                    : this.paginationState.pageIndex,
+                pageSize: newSize === 0 ? totalRows : newSize,
+            };
+        }
         (_d = this.table) === null || _d === void 0 ? void 0 : _d.setOptions(prev => (Object.assign(Object.assign({}, prev), { state: Object.assign(Object.assign({}, prev.state), { pagination: this.paginationState }) })));
     }
     onFilterValueChange(newVal) {
