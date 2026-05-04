@@ -9768,16 +9768,16 @@ const GcdsTable = class {
         const rows = this.pagination
             ? this.table.getPaginationRowModel().rows
             : this.table.getRowModel().rows;
-        return (index.h(index.Host, null, index.h("section", { class: "gcds-table" }, (this.filter || this.sortEnabled()) && renderFilterSortModal(this), index.h("div", { class: "gcds-table__active-pills" }, renderFilterPills(this.filterValue, this.lang, () => {
+        return (index.h(index.Host, null, index.h("section", { class: "gcds-table" }, this.el.querySelector('[slot="caption"]') && (index.h("div", { id: "gcds-table__caption" }, index.h("slot", { name: "caption" }))), (this.filter || this.sortEnabled()) && renderFilterSortModal(this), index.h("div", { class: "gcds-table__active-pills" }, renderFilterPills(this.filterValue, this.lang, () => {
             this.filterValue = '';
             updateTableOptions(this);
         }), renderSortPills(this.sorting, this.table, this.lang, (columnId) => {
             this.sorting = this.sorting.filter(s => s.id !== columnId);
             updateTableOptions(this);
-        })), index.h("div", { class: "gcds-table__row-management" }, this.pagination && (index.h("div", { class: "gcds-table__page-size" }, index.h("gcds-select", { label: I18N$2[this.lang].rowsPerPage, name: "page-size", selectId: "gcds-table-page-size", value: this.paginationSize.toString(), onChange: e => this.handlePageSizeSelect(e) }, this.paginationSizeOptions.map(opt => (index.h("option", { key: opt, value: opt }, opt === 0 ? 'All' : opt)))))), index.h("span", { class: "gcds-table__page-info", role: "status", "aria-live": "polite" }, renderTableStatus(this.el, this.table, this.paginationState, this.lang))), index.h("table", { class: "gcds-table__table", tabindex: "-1", ref: el => {
+        })), index.h("div", { class: "gcds-table__row-management" }, this.pagination && (index.h("div", { class: "gcds-table__page-size" }, index.h("gcds-select", { label: I18N$2[this.lang].rowsPerPage, name: "page-size", selectId: "gcds-table-page-size", value: this.paginationSize.toString(), onChange: e => this.handlePageSizeSelect(e) }, this.paginationSizeOptions.map(opt => (index.h("option", { key: opt, value: opt }, opt === 0 ? 'All' : opt)))))), index.h("span", { class: "gcds-table__page-info", role: "status", "aria-live": "polite" }, renderTableStatus(this.el, this.table, this.paginationState, this.lang))), index.h("table", { class: "gcds-table__table", tabindex: "-1", "aria-labelledby": this.el.querySelector('[slot="caption"]') ? 'gcds-table__caption' : undefined, ref: el => {
                 if (el)
                     this.shadowElement = el;
-            } }, this.el.querySelector('[slot="caption"]') && (index.h("caption", null, index.h("slot", { name: "caption" }))), index.h("thead", null, headerGroups.map(hg => (index.h("tr", { key: hg.id }, hg.headers.map(header => {
+            } }, index.h("thead", null, headerGroups.map(hg => (index.h("tr", { key: hg.id }, hg.headers.map(header => {
             var _a;
             const colDef = ((_a = this.columns) !== null && _a !== void 0 ? _a : []).find(c => c.field === header.id);
             const canSort = header.column.getCanSort();
