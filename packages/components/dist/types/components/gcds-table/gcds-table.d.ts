@@ -40,9 +40,10 @@ export declare class GcdsTable {
     onColumnsChange(newVal: string | TableColumn[]): void;
     onDataChange(newVal: string | object[]): void;
     onsortChange(): void;
-    onPaginationChange(): void;
+    onPaginationChange(newVal: boolean): void;
     onPageChange(newPage: number): void;
     onPageSizeChange(newSize: number): void;
+    onSizeOptionsChange(newVal: number[]): void;
     onFilterValueChange(newVal: string): void;
     onLangChange(newVal: string): void;
     private initTable;

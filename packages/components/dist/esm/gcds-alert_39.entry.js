@@ -9513,9 +9513,7 @@ const GcdsTable = class {
          * Available page-size options.
          * Use 0 to represent "All rows".
          */
-        this.paginationSizeOptions = [
-            10, 25, 50, 0,
-        ];
+        this.paginationSizeOptions = [10, 25, 50, 0];
         /** Enable global filter */
         this.filter = false;
         /** Current filter string */
@@ -9564,7 +9562,19 @@ const GcdsTable = class {
     onsortChange() {
         this.onDataChange(this.data);
     }
-    onPaginationChange() {
+    onPaginationChange(newVal) {
+        if (newVal) {
+            this.paginationState = {
+                pageIndex: Math.max(0, this.paginationCurrentPage - 1),
+                pageSize: this.paginationSize === 0 ? Number.MAX_SAFE_INTEGER : this.paginationSize,
+            };
+        }
+        else {
+            this.paginationState = {
+                pageIndex: Math.max(0, this.paginationCurrentPage - 1),
+                pageSize: Number.MAX_SAFE_INTEGER,
+            };
+        }
         this.onDataChange(this.data);
     }
     onPageChange(newPage) {
@@ -9591,6 +9601,15 @@ const GcdsTable = class {
             };
         }
         (_d = this.table) === null || _d === void 0 ? void 0 : _d.setOptions(prev => (Object.assign(Object.assign({}, prev), { state: Object.assign(Object.assign({}, prev.state), { pagination: this.paginationState }) })));
+    }
+    onSizeOptionsChange(newVal) {
+        if (Array.isArray(newVal)) {
+            updateTableOptions(this);
+        }
+        else {
+            this.paginationSizeOptions = [10, 25, 50, 0];
+        }
+        console.log(this.paginationState);
     }
     onFilterValueChange(newVal) {
         var _a;
@@ -9821,6 +9840,7 @@ const GcdsTable = class {
         "pagination": ["onPaginationChange"],
         "paginationCurrentPage": ["onPageChange"],
         "paginationSize": ["onPageSizeChange"],
+        "paginationSizeOptions": ["onSizeOptionsChange"],
         "filterValue": ["onFilterValueChange"],
         "lang": ["onLangChange"]
     }; }
