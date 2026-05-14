@@ -35,11 +35,13 @@ export declare class GcdsTable {
     gcdsTableStateChange: EventEmitter<GcdsTableStateChange>;
     private table;
     private lastEmittedRowIds;
+    private isInitializing;
+    private hasRenderedOnce;
     private initialFilter;
     private initialSorting;
     onColumnsChange(newVal: string | TableColumn[]): void;
     onDataChange(newVal: string | object[]): void;
-    onsortChange(): void;
+    onSortChange(): void;
     onPaginationChange(newVal: boolean): void;
     onPageChange(newPage: number): void;
     onPageSizeChange(newSize: number): void;
@@ -51,12 +53,12 @@ export declare class GcdsTable {
     private sortEnabled;
     private getTemplate;
     private applyBindings;
-    private applyListeners;
-    private cloneAndInject;
-    private mountSlottedCell;
+    private createSlottedElements;
+    private syncSlottedElements;
     private handleSortToggle;
     private handlePageSizeSelect;
     private handlePaginationClick;
+    private getManagedSlotName;
     getVisibleRows(): Promise<{
         rowId: string;
         rowIndex: number;

@@ -76,6 +76,10 @@ const renderTableStatus = (el, table, paginationState, lang) => {
             .replace('{start}', currentPageIndex * paginationSize + 1)
             .replace('{end}', Math.min((currentPageIndex + 1) * paginationSize, totalRows))
             .replace('{total}', totalRows);
+        // No rows avalable
+    }
+    else if (table.getRowCount() === 0) {
+        return I18N[lang].showingNoRows;
         // Rows on one page
     }
     else {
@@ -134,7 +138,14 @@ const getSortValue = (sort) => {
 };
 const renderFilterSortModal = element => {
     const { filterValue, lang } = element;
-    return (h("div", { class: "gcds-table__filters" }, h("gcds-button", { size: "small", buttonRole: "primary", onClick: () => element.filterSortModal.showModal() }, I18N[lang].filterAndSort, filterValue && (h(Fragment, null, h("gcds-sr-only", { tag: "span" }, ":"), h("span", { class: "gcds-table__active-count", "aria-label": `${I18N[lang].activeBadgeLabel.replace('{count}', 1)}` }, "1")))), h("dialog", { class: "gcds-table__modal", "aria-modal": "true", "aria-labelledby": "gcds-table__modal-heading", ref: el => (element.filterSortModal = el) }, h("div", { class: "gcds-table__modal-header" }, h("gcds-heading", { tag: "h2", id: "gcds-table__modal-heading", marginTop: "0", marginBottom: "0" }, I18N[lang].filterAndSort), h("gcds-button", { "button-role": "secondary", onClick: () => {
+    return (h("div", { class: "gcds-table__filters" }, h("gcds-button", { size: "small", buttonRole: "primary", onClick: () => element.filterSortModal.showModal() }, element.filter && element.sortEnabled()
+        ?
+            I18N[lang].filterAndSort
+        :
+            element.filter ?
+                I18N[lang].filter
+                :
+                    I18N[lang].sort, filterValue && (h(Fragment, null, h("gcds-sr-only", { tag: "span" }, ":"), h("span", { class: "gcds-table__active-count", "aria-label": `${I18N[lang].activeBadgeLabel.replace('{count}', 1)}` }, "1")))), h("dialog", { class: "gcds-table__modal", "aria-modal": "true", "aria-labelledby": "gcds-table__modal-heading", ref: el => (element.filterSortModal = el) }, h("div", { class: "gcds-table__modal-header" }, h("gcds-heading", { tag: "h2", id: "gcds-table__modal-heading", marginTop: "0", marginBottom: "0" }, I18N[lang].filterAndSort), h("gcds-button", { "button-role": "secondary", onClick: () => {
             element.filterSortModal.close();
             if (element.filter) {
                 element.filterInput.value = element.initialFilter;
@@ -164,7 +175,7 @@ const renderFilterSortModal = element => {
             }
             updateTableOptions(element);
             element.filterSortModal.close();
-        } }, h("div", { class: "gcds-table__modal-content" }, element.filter && (h("gcds-input", { class: "gcds-table__modal-filter", type: "search", label: I18N[lang].filterLabel, name: "filter", inputId: "gcds-table-filter", autoFocus: true, value: filterValue, ref: el => (element.filterInput = el) })), element.sortEnabled() && renderSortRadios(element)), h("div", { class: "gcds-table__modal-footer" }, h("gcds-button", { "button-role": "secondary", onClick: () => {
+        } }, h("div", { class: "gcds-table__modal-content" }, element.filter && (h("gcds-input", { class: "gcds-table__modal-filter", type: "search", label: I18N[lang].filter, name: "filter", inputId: "gcds-table-filter", autoFocus: true, value: filterValue, ref: el => (element.filterInput = el) })), element.sortEnabled() && renderSortRadios(element)), h("div", { class: "gcds-table__modal-footer" }, h("gcds-button", { "button-role": "secondary", onClick: () => {
             if (element.filter) {
                 element.filterInput.value = element.initialFilter;
             }

@@ -118,38 +118,113 @@
         --gcds-table-modal-footer-button-padding: var(--gcds-spacing-125)
           var(--gcds-spacing-200);
       }
+
+            .pokemon-type {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.35rem 0.8rem;
+        border-radius: 999px;
+        font-size: 0.875rem;
+        font-weight: 600;
+        text-transform: capitalize;
+        color: #fff;
+      }
+      .electric,
+      .fairy,
+      .ground,
+      .ice,
+      .steel {
+        color: #222;
+      }
+      .grass {
+        background: #78c850;
+      }
+      .fire {
+        background: #f08030;
+      }
+      .water {
+        background: #6890f0;
+      }
+      .electric {
+        background: #f8d030;
+      }
+      .psychic {
+        background: #f85888;
+      }
+      .ice {
+        background: #98d8d8;
+      }
+      .dragon {
+        background: #7038f8;
+      }
+      .dark {
+        background: #705848;
+      }
+      .fairy {
+        background: #ee99ac;
+      }
+      .normal {
+        background: #a8a878;
+      }
+      .fighting {
+        background: #c03028;
+      }
+      .flying {
+        background: #a890f0;
+      }
+      .poison {
+        background: #a040a0;
+      }
+      .ground {
+        background: #e0c068;
+      }
+      .rock {
+        background: #b8a038;
+      }
+      .bug {
+        background: #a8b820;
+      }
+      .ghost {
+        background: #705898;
+      }
+      .steel {
+        background: #b8b8d0;
+      }
     </style>
 
     <script>
       async function getFirst151Pokemon() {
-        try {
-          // Step 1: Get the first 151 Pokémon (just names + URLs)
-          const listResponse = await fetch(
-            'https://pokeapi.co/api/v2/pokemon?limit=151',
-          );
-          const listData = await listResponse.json();
+          try {
+            // Step 1: Get the first 151 Pokémon (just names + URLs)
+            const listResponse = await fetch(
+              'https://pokeapi.co/api/v2/pokemon?limit=151',
+            );
+            const listData = await listResponse.json();
 
-          // Step 2: Fetch full details for each Pokémon
-          const pokemonDetails = await Promise.all(
-            listData.results.map(async pokemon => {
-              const res = await fetch(pokemon.url);
-              const data = await res.json();
+            // Step 2: Fetch full details for each Pokémon
+            const pokemonDetails = await Promise.all(
+              listData.results.map(async pokemon => {
+                const res = await fetch(pokemon.url);
+                const data = await res.json();
 
-              return {
-                number: data.id,
-                name: data.name,
-                height: data.height,
-                weight: data.weight,
-                base_experience: data.base_experience,
-              };
-            }),
-          );
+                return {
+                  number: data.id,
+                  name: data.name,
+                  sprite: data.sprites.front_default,
+                  height: data.height,
+                  weight: data.weight,
+                  base_experience: data.base_experience,
+                  type: data.types[0]?.type?.name,
+                };
+              }),
+            );
 
-          return pokemonDetails;
-        } catch (error) {
-          console.error('Error fetching Pokémon:', error);
+            return pokemonDetails;
+          } catch (error) {
+            console.error('Error fetching Pokémon:', error);
+          }
         }
-      }
 
 
       
@@ -175,6 +250,7 @@
             sort: false,
             slotted: true,
           },
+          { field: 'type', header: 'Type', slotted: true },
           { field: 'height', header: 'Height', alignment: 'end' },
           { field: 'weight', header: 'Weight', alignment: 'end' },
           {
@@ -236,6 +312,12 @@
               width="150"
               height="150"
             />
+          </template>
+          <template slot="cell:type">
+            <span
+              data-bind="type"
+              data-bind-template-class="pokemon-type {type}"
+            ></span>
           </template>
           <template slot="cell:actions">
             <gcds-button
