@@ -448,7 +448,7 @@ export class GcdsTable {
             const fallbackValue = String((_b = cell.getValue()) !== null && _b !== void 0 ? _b : '');
             cellContent = !isSlotted ? (fallbackValue) : (h("slot", { name: this.getManagedSlotName(row.id, cell.column.id) }, fallbackValue));
             return (h(Tag, Object.assign({ key: cell.id, class: `gcds-table__td${(colDef === null || colDef === void 0 ? void 0 : colDef.alignment) ? ` alignment-${colDef.alignment}` : ''}`, "data-column": colDef === null || colDef === void 0 ? void 0 : colDef.header, "data-cell": `${cell.column.id}-${row.id}` }, scope), cellContent));
-        }))))))), this.pagination && this.paginationSize !== 0 && (h("gcds-pagination", { display: "list", currentPage: this.paginationState.pageIndex + 1, totalPages: this.table.getPageCount(), label: I18N[this.lang].paginationLabel, onGcdsClick: e => this.handlePaginationClick(e), lang: this.lang })))));
+        }))))))), this.pagination && this.paginationSize !== 0 && rows.length != 0 && (h("gcds-pagination", { display: "list", currentPage: this.paginationState.pageIndex + 1, totalPages: this.table.getPageCount(), label: I18N[this.lang].paginationLabel, onGcdsClick: e => this.handlePaginationClick(e), lang: this.lang })))));
     }
     static get is() { return "gcds-table"; }
     static get encapsulation() { return "shadow"; }
