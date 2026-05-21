@@ -238,7 +238,8 @@
       
       customElements.whenDefined('gcds-table').then(() => {
         const tableSlots = document.getElementById('my-table');
-        const tableEmpty = document.getElementById('my-empty-table');
+        const tableEmptyEn = document.getElementById('my-empty-table');
+        const tableEmptyFr = document.getElementById('my-empty-table-fr');
 
         const columns = [
           {
@@ -278,7 +279,8 @@
 
         // Populate the table columns
         tableSlots.columns = columns;
-        tableEmpty.columns = columns;
+        tableEmptyEn.columns = columns;
+        tableEmptyFr.columns = columns;
 
         // Populate the table rows with results from API
         getFirst151Pokemon().then(pokemon => {
@@ -498,7 +500,7 @@
       <p>Just an example of an empty table. (No data passed)</p>
 
       <gcds-table
-        id="my-empty-table"
+        id="my-empty-table-fr"
         sort="true"
         pagination="true"
         filter="true"
