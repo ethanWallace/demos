@@ -134,7 +134,7 @@ const renderSortRadios = (element) => {
             value: `desc-${col.field}`,
         });
     });
-    return (h("div", { class: "gcds-table__modal-sort" }, h("gcds-heading", { tag: "h3", "margin-top": "0", "margin-bottom": "0" }, h("gcds-icon", { name: "sort", "margin-right": "100", "aria-hidden": "true" }), I18N[lang].sort), h("gcds-radios", { legend: I18N[lang].sort, "hide-legend": true, name: "sort", autoFocus: true, options: radioOptions, value: isSorted, ref: el => (element.sortRadios = el) })));
+    return (h("div", { class: "gcds-table__modal-sort" }, h("gcds-heading", { tag: "h3", "margin-top": "0", "margin-bottom": "0" }, h("div", null, h("gcds-icon", { name: "sort", size: "h6", "margin-right": "100", "aria-hidden": "true" }), I18N[lang].sort)), h("gcds-radios", { legend: I18N[lang].sort, "hide-legend": true, name: "sort", autoFocus: true, options: radioOptions, value: isSorted, ref: el => (element.sortRadios = el) })));
 };
 const getSortValue = (sort) => {
     if (!(sort === null || sort === void 0 ? void 0 : sort.length))
