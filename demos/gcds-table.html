@@ -458,7 +458,7 @@
         tableDisplay.slots = gcdsTable.slots;
       </script>
 
-      <gcds-heading tag="h2" class="mt-300">Empty table</gcds-heading>
+      <gcds-heading tag="h2" class="mt-300">Empty table - English</gcds-heading>
 
       <p>Just an example of an empty table. (No data passed)</p>
 
@@ -470,7 +470,43 @@
       >
         <div slot="caption">
           <h2>Pokémon</h2>
-          Table of the best Pokémon (first generation).
+          <p>Table of the best Pokémon (first generation).</p>
+        </div>
+        <template slot="cell:sprite">
+          <img
+            data-bind-template-src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{number}.png"
+            data-bind-alt="name"
+            src=""
+            alt=""
+            width="150"
+            height="150"
+          />
+        </template>
+        <template slot="cell:actions">
+          <gcds-button
+            button-role="secondary"
+            size="small"
+            onclick="console.log(this.rowData)"
+          >
+            Console log row data
+          </gcds-button>
+        </template>
+      </gcds-table>
+
+      <gcds-heading tag="h2" class="mt-300">Empty table - French</gcds-heading>
+
+      <p>Just an example of an empty table. (No data passed)</p>
+
+      <gcds-table
+        id="my-empty-table"
+        sort="true"
+        pagination="true"
+        filter="true"
+        lang="fr"
+      >
+        <div slot="caption">
+          <h2>Pokémon</h2>
+          <p>Table of the best Pokémon (first generation).</p>
         </div>
         <template slot="cell:sprite">
           <img

@@ -117,6 +117,7 @@ export class GcdsTable {
         var _a;
         if (this.isInitializing)
             return;
+        newPage = Math.round(newPage);
         this.paginationState = Object.assign(Object.assign({}, this.paginationState), { pageIndex: Math.max(0, newPage - 1) });
         (_a = this.table) === null || _a === void 0 ? void 0 : _a.setOptions(prev => (Object.assign(Object.assign({}, prev), { state: Object.assign(Object.assign({}, prev.state), { pagination: this.paginationState }) })));
     }
@@ -124,6 +125,7 @@ export class GcdsTable {
         var _a, _b, _c, _d;
         if (this.isInitializing)
             return;
+        newSize = Math.round(newSize);
         const totalRows = (_c = (_b = (_a = this.table) === null || _a === void 0 ? void 0 : _a.getPreFilteredRowModel()) === null || _b === void 0 ? void 0 : _b.rows.length) !== null && _c !== void 0 ? _c : 0;
         if (newSize === 0) {
             this.paginationState = {
@@ -154,6 +156,10 @@ export class GcdsTable {
         var _a;
         if (this.isInitializing)
             return;
+        if (!this.filter && newVal !== '') {
+            this.filterValue = '';
+            return;
+        }
         this.globalFilter = newVal;
         (_a = this.table) === null || _a === void 0 ? void 0 : _a.setOptions(prev => (Object.assign(Object.assign({}, prev), { state: Object.assign(Object.assign({}, prev.state), { globalFilter: this.globalFilter }) })));
     }
@@ -398,7 +404,7 @@ export class GcdsTable {
         const rows = this.pagination
             ? this.table.getPaginationRowModel().rows
             : this.table.getRowModel().rows;
-        return (h(Host, null, h("section", { class: "gcds-table" }, this.el.querySelector('[slot="caption"]') && (h("div", { id: "gcds-table__caption" }, h("slot", { name: "caption" }))), (this.filter || this.sortEnabled()) && renderFilterSortModal(this), h("div", { class: "gcds-table__active-pills" }, renderFilterPills(this.filterValue, this.lang, () => {
+        return (h(Host, null, h("section", { class: "gcds-table" }, this.el.querySelector('[slot="caption"]') && (h("div", { id: "gcds-table__caption" }, h("slot", { name: "caption" }))), (this.filter || this.sortEnabled()) && renderFilterSortModal(this), h("div", { class: "gcds-table__active-pills" }, this.filter && renderFilterPills(this.filterValue, this.lang, () => {
             this.filterValue = '';
             updateTableOptions(this);
         }), renderSortPills(this.sorting, this.table, this.lang, (columnId) => {
@@ -442,7 +448,7 @@ export class GcdsTable {
             const fallbackValue = String((_b = cell.getValue()) !== null && _b !== void 0 ? _b : '');
             cellContent = !isSlotted ? (fallbackValue) : (h("slot", { name: this.getManagedSlotName(row.id, cell.column.id) }, fallbackValue));
             return (h(Tag, Object.assign({ key: cell.id, class: `gcds-table__td${(colDef === null || colDef === void 0 ? void 0 : colDef.alignment) ? ` alignment-${colDef.alignment}` : ''}`, "data-column": colDef === null || colDef === void 0 ? void 0 : colDef.header, "data-cell": `${cell.column.id}-${row.id}` }, scope), cellContent));
-        }))))))), this.pagination && this.paginationSize !== 0 && (h("gcds-pagination", { display: "list", currentPage: this.paginationState.pageIndex + 1, totalPages: this.table.getPageCount(), label: I18N[this.lang].paginationLabel, onGcdsClick: e => this.handlePaginationClick(e) })))));
+        }))))))), this.pagination && this.paginationSize !== 0 && (h("gcds-pagination", { display: "list", currentPage: this.paginationState.pageIndex + 1, totalPages: this.table.getPageCount(), label: I18N[this.lang].paginationLabel, onGcdsClick: e => this.handlePaginationClick(e), lang: this.lang })))));
     }
     static get is() { return "gcds-table"; }
     static get encapsulation() { return "shadow"; }

@@ -56,18 +56,18 @@ const renderTableStatus = (el, table, paginationState, lang) => {
     const filteredRows = table.getFilteredRowModel().rows.length;
     const paginationSize = (_b = paginationState === null || paginationState === void 0 ? void 0 : paginationState.pageSize) !== null && _b !== void 0 ? _b : 0;
     // Filtered results with multiple pages
-    if (el.filterValue && el.pagination && table.getPageCount() > 1) {
+    if (el.filter && el.filterValue && el.pagination && table.getPageCount() > 1) {
         return I18N[lang].showingMatchesPagination
             .replace('{start}', currentPageIndex * paginationSize + 1)
             .replace('{end}', Math.min((currentPageIndex + 1) * paginationSize, totalRows))
             .replace('{filtered}', filteredRows);
         // Filtered results on singular page
     }
-    else if (el.filterValue && el.pagination && table.getPageCount() === 1) {
+    else if (el.filter && el.filterValue && el.pagination && table.getPageCount() === 1) {
         return I18N[lang].showingMatches.replace('{matchNumber}', filteredRows);
         // No results match filter
     }
-    else if (el.filterValue && filteredRows === 0) {
+    else if (el.filter && el.filterValue && filteredRows === 0) {
         return I18N[lang].showingNoMatches;
         // Rows across multiple pages
     }
@@ -137,12 +137,12 @@ const getSortValue = (sort) => {
     return `${desc ? 'desc' : 'asc'}-${id}`;
 };
 const renderFilterSortModal = element => {
-    const { filterValue, lang } = element;
+    const { filter, filterValue, lang } = element;
     return (h("div", { class: "gcds-table__filters" }, h("gcds-button", { size: "small", buttonRole: "primary", onClick: () => element.filterSortModal.showModal() }, h("div", null, element.filter && element.sortEnabled() ? (h("gcds-icon", { name: "tune", size: "h5", "margin-right": "50" })) : element.filter ? (h("gcds-icon", { name: "filter", size: "h5", "margin-right": "50" })) : (h("gcds-icon", { name: "arrow-up-down", size: "h5", "margin-right": "50" })), element.filter && element.sortEnabled()
         ? I18N[lang].filterAndSort
         : element.filter
             ? I18N[lang].filter
-            : I18N[lang].sort, filterValue && (h(Fragment, null, h("gcds-sr-only", { tag: "span" }, ":"), h("span", { class: "gcds-table__active-count", "aria-label": `${I18N[lang].activeBadgeLabel.replace('{count}', 1)}` }, "1"))))), h("dialog", { class: "gcds-table__modal", "aria-modal": "true", "aria-labelledby": "gcds-table__modal-heading", ref: el => (element.filterSortModal = el) }, h("div", { class: "gcds-table__modal-header" }, h("gcds-heading", { tag: "h2", id: "gcds-table__modal-heading", marginTop: "0", marginBottom: "0" }, I18N[lang].filterAndSort), h("gcds-button", { "button-role": "secondary", onClick: () => {
+            : I18N[lang].sort, filter && filterValue && (h(Fragment, null, h("gcds-sr-only", { tag: "span" }, ":"), h("span", { class: "gcds-table__active-count", "aria-label": `${I18N[lang].activeBadgeLabel.replace('{count}', 1)}` }, "1"))))), h("dialog", { class: "gcds-table__modal", "aria-modal": "true", "aria-labelledby": "gcds-table__modal-heading", ref: el => (element.filterSortModal = el) }, h("div", { class: "gcds-table__modal-header" }, h("gcds-heading", { tag: "h2", id: "gcds-table__modal-heading", marginTop: "0", marginBottom: "0" }, I18N[lang].filterAndSort), h("gcds-button", { "button-role": "secondary", onClick: () => {
             element.filterSortModal.close();
             if (element.filter) {
                 element.filterInput.value = element.initialFilter;

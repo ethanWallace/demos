@@ -9327,18 +9327,18 @@ const renderTableStatus = (el, table, paginationState, lang) => {
     const filteredRows = table.getFilteredRowModel().rows.length;
     const paginationSize = (_b = paginationState === null || paginationState === void 0 ? void 0 : paginationState.pageSize) !== null && _b !== void 0 ? _b : 0;
     // Filtered results with multiple pages
-    if (el.filterValue && el.pagination && table.getPageCount() > 1) {
+    if (el.filter && el.filterValue && el.pagination && table.getPageCount() > 1) {
         return I18N$3[lang].showingMatchesPagination
             .replace('{start}', currentPageIndex * paginationSize + 1)
             .replace('{end}', Math.min((currentPageIndex + 1) * paginationSize, totalRows))
             .replace('{filtered}', filteredRows);
         // Filtered results on singular page
     }
-    else if (el.filterValue && el.pagination && table.getPageCount() === 1) {
+    else if (el.filter && el.filterValue && el.pagination && table.getPageCount() === 1) {
         return I18N$3[lang].showingMatches.replace('{matchNumber}', filteredRows);
         // No results match filter
     }
-    else if (el.filterValue && filteredRows === 0) {
+    else if (el.filter && el.filterValue && filteredRows === 0) {
         return I18N$3[lang].showingNoMatches;
         // Rows across multiple pages
     }
@@ -9412,7 +9412,7 @@ const getSortValue = (sort) => {
     return `${desc ? 'desc' : 'asc'}-${id}`;
 };
 const renderFilterSortModal = element => {
-    const { filterValue, lang } = element;
+    const { filter, filterValue, lang } = element;
     return (index.h("div", { class: "gcds-table__filters" },
         index.h("gcds-button", { size: "small", buttonRole: "primary", onClick: () => element.filterSortModal.showModal() },
             index.h("div", null,
@@ -9422,7 +9422,7 @@ const renderFilterSortModal = element => {
                     : element.filter
                         ? I18N$3[lang].filter
                         : I18N$3[lang].sort,
-                filterValue && (index.h(index.Fragment, null,
+                filter && filterValue && (index.h(index.Fragment, null,
                     index.h("gcds-sr-only", { tag: "span" }, ":"),
                     index.h("span", { class: "gcds-table__active-count", "aria-label": `${I18N$3[lang].activeBadgeLabel.replace('{count}', 1)}` }, "1"))))),
         index.h("dialog", { class: "gcds-table__modal", "aria-modal": "true", "aria-labelledby": "gcds-table__modal-heading", ref: el => (element.filterSortModal = el) },
@@ -9609,6 +9609,7 @@ const GcdsTable = class {
         var _a;
         if (this.isInitializing)
             return;
+        newPage = Math.round(newPage);
         this.paginationState = Object.assign(Object.assign({}, this.paginationState), { pageIndex: Math.max(0, newPage - 1) });
         (_a = this.table) === null || _a === void 0 ? void 0 : _a.setOptions(prev => (Object.assign(Object.assign({}, prev), { state: Object.assign(Object.assign({}, prev.state), { pagination: this.paginationState }) })));
     }
@@ -9616,6 +9617,7 @@ const GcdsTable = class {
         var _a, _b, _c, _d;
         if (this.isInitializing)
             return;
+        newSize = Math.round(newSize);
         const totalRows = (_c = (_b = (_a = this.table) === null || _a === void 0 ? void 0 : _a.getPreFilteredRowModel()) === null || _b === void 0 ? void 0 : _b.rows.length) !== null && _c !== void 0 ? _c : 0;
         if (newSize === 0) {
             this.paginationState = {
@@ -9646,6 +9648,10 @@ const GcdsTable = class {
         var _a;
         if (this.isInitializing)
             return;
+        if (!this.filter && newVal !== '') {
+            this.filterValue = '';
+            return;
+        }
         this.globalFilter = newVal;
         (_a = this.table) === null || _a === void 0 ? void 0 : _a.setOptions(prev => (Object.assign(Object.assign({}, prev), { state: Object.assign(Object.assign({}, prev.state), { globalFilter: this.globalFilter }) })));
     }
@@ -9890,7 +9896,7 @@ const GcdsTable = class {
         const rows = this.pagination
             ? this.table.getPaginationRowModel().rows
             : this.table.getRowModel().rows;
-        return (index.h(index.Host, null, index.h("section", { class: "gcds-table" }, this.el.querySelector('[slot="caption"]') && (index.h("div", { id: "gcds-table__caption" }, index.h("slot", { name: "caption" }))), (this.filter || this.sortEnabled()) && renderFilterSortModal(this), index.h("div", { class: "gcds-table__active-pills" }, renderFilterPills(this.filterValue, this.lang, () => {
+        return (index.h(index.Host, null, index.h("section", { class: "gcds-table" }, this.el.querySelector('[slot="caption"]') && (index.h("div", { id: "gcds-table__caption" }, index.h("slot", { name: "caption" }))), (this.filter || this.sortEnabled()) && renderFilterSortModal(this), index.h("div", { class: "gcds-table__active-pills" }, this.filter && renderFilterPills(this.filterValue, this.lang, () => {
             this.filterValue = '';
             updateTableOptions(this);
         }), renderSortPills(this.sorting, this.table, this.lang, (columnId) => {
@@ -9934,7 +9940,7 @@ const GcdsTable = class {
             const fallbackValue = String((_b = cell.getValue()) !== null && _b !== void 0 ? _b : '');
             cellContent = !isSlotted ? (fallbackValue) : (index.h("slot", { name: this.getManagedSlotName(row.id, cell.column.id) }, fallbackValue));
             return (index.h(Tag, Object.assign({ key: cell.id, class: `gcds-table__td${(colDef === null || colDef === void 0 ? void 0 : colDef.alignment) ? ` alignment-${colDef.alignment}` : ''}`, "data-column": colDef === null || colDef === void 0 ? void 0 : colDef.header, "data-cell": `${cell.column.id}-${row.id}` }, scope), cellContent));
-        }))))))), this.pagination && this.paginationSize !== 0 && (index.h("gcds-pagination", { display: "list", currentPage: this.paginationState.pageIndex + 1, totalPages: this.table.getPageCount(), label: I18N$3[this.lang].paginationLabel, onGcdsClick: e => this.handlePaginationClick(e) })))));
+        }))))))), this.pagination && this.paginationSize !== 0 && (index.h("gcds-pagination", { display: "list", currentPage: this.paginationState.pageIndex + 1, totalPages: this.table.getPageCount(), label: I18N$3[this.lang].paginationLabel, onGcdsClick: e => this.handlePaginationClick(e), lang: this.lang })))));
     }
     get el() { return index.getElement(this); }
     static get watchers() { return {
