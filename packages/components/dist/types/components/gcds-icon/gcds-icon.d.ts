@@ -22,7 +22,7 @@ export declare class GcdsIcon {
     /**
      * Name of the icon.
      */
-    name: 'checkmark-circle' | 'chevron-down' | 'chevron-left' | 'chevron-right' | 'chevron-up' | 'close' | 'download' | 'email' | 'exclamation-circle' | 'external' | 'info-circle' | 'phone' | 'search' | 'warning-triangle';
+    name: 'arrow-down' | 'arrow-up' | 'arrow-up-down' | 'checkmark-circle' | 'chevron-down' | 'chevron-left' | 'chevron-right' | 'chevron-up' | 'close' | 'download' | 'email' | 'exclamation-circle' | 'external' | 'filter' | 'info-circle' | 'phone' | 'search' | 'sort' | 'tune' | 'warning-triangle';
     validateName(newValue: string): void;
     /**
      * Defines the size of the icon.

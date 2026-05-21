@@ -1,5 +1,5 @@
 import { type Table, type Column, type PaginationState, type SortingState } from '@tanstack/table-core';
-declare const getSortIcon: (column: Column<Record<string, unknown>>) => string;
+declare const getSortIcon: (column: Column<Record<string, unknown>>) => "arrow-up" | "arrow-down" | "arrow-up-down" | "";
 declare const getSortTitle: (column: Column<Record<string, unknown>>, lang: string) => string;
 declare const renderActiveBadge: (count: number, lang: string) => HTMLSpanElement;
 declare const renderTableStatus: (el: HTMLGcdsTableElement, table: Table<Record<string, unknown>>, paginationState: PaginationState | undefined, lang: string) => string;

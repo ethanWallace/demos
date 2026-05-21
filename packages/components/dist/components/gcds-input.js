@@ -1,2 +1,2 @@
-import{G as s,d as o}from"./p-KbEsep1U.js";const p=s;const t=o;export{p as GcdsInput,t as defineCustomElement};
+import{G as o,d as s}from"./p-C_P1Cgw6.js";const t=o;const p=s;export{t as GcdsInput,p as defineCustomElement};
 //# sourceMappingURL=gcds-input.js.map

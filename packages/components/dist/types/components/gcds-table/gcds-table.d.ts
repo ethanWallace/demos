@@ -1,5 +1,11 @@
 import { EventEmitter } from '../../stencil-public-runtime';
 import { TableColumn, GcdsTableStateChange } from './utils/table-helpers';
+/**
+ * A table is a structured layout of related data in rows and columns.
+ *
+ * @slot caption - Slot to give an accessible name to the table, so that assistive technologies can identify it and announce it.
+ * @slot cell:<field> - Slot to assign HTML content to a table cell, where <field> corresponds to the `field` property of a column definition.
+ */
 export declare class GcdsTable {
     el: HTMLGcdsTableElement;
     private shadowElement;

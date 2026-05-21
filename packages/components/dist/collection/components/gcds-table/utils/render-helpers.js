@@ -11,10 +11,10 @@ const getSortIcon = (column) => {
         return '';
     const sorted = column.getIsSorted();
     if (sorted === 'asc')
-        return ' ▲';
+        return 'arrow-up';
     if (sorted === 'desc')
-        return ' ▼';
-    return ' ⇅';
+        return 'arrow-down';
+    return 'arrow-up-down';
 };
 /* Get appropriate sort button title based on column's sort state
  * @param column - the column to get the sort title for
@@ -128,7 +128,7 @@ const renderSortRadios = (element) => {
             value: `desc-${col.field}`,
         });
     });
-    return (h("gcds-radios", { class: "gcds-table__modal-sort", legend: I18N[lang].sort, name: "sort", autoFocus: true, options: radioOptions, value: isSorted, ref: el => (element.sortRadios = el) }));
+    return (h("div", { class: "gcds-table__modal-sort" }, h("gcds-heading", { tag: "h3", "margin-top": "0", "margin-bottom": "0" }, h("gcds-icon", { name: "sort", "margin-right": "100", "aria-hidden": "true" }), I18N[lang].sort), h("gcds-radios", { legend: I18N[lang].sort, "hide-legend": true, name: "sort", autoFocus: true, options: radioOptions, value: isSorted, ref: el => (element.sortRadios = el) })));
 };
 const getSortValue = (sort) => {
     if (!(sort === null || sort === void 0 ? void 0 : sort.length))
@@ -138,14 +138,11 @@ const getSortValue = (sort) => {
 };
 const renderFilterSortModal = element => {
     const { filterValue, lang } = element;
-    return (h("div", { class: "gcds-table__filters" }, h("gcds-button", { size: "small", buttonRole: "primary", onClick: () => element.filterSortModal.showModal() }, element.filter && element.sortEnabled()
-        ?
-            I18N[lang].filterAndSort
-        :
-            element.filter ?
-                I18N[lang].filter
-                :
-                    I18N[lang].sort, filterValue && (h(Fragment, null, h("gcds-sr-only", { tag: "span" }, ":"), h("span", { class: "gcds-table__active-count", "aria-label": `${I18N[lang].activeBadgeLabel.replace('{count}', 1)}` }, "1")))), h("dialog", { class: "gcds-table__modal", "aria-modal": "true", "aria-labelledby": "gcds-table__modal-heading", ref: el => (element.filterSortModal = el) }, h("div", { class: "gcds-table__modal-header" }, h("gcds-heading", { tag: "h2", id: "gcds-table__modal-heading", marginTop: "0", marginBottom: "0" }, I18N[lang].filterAndSort), h("gcds-button", { "button-role": "secondary", onClick: () => {
+    return (h("div", { class: "gcds-table__filters" }, h("gcds-button", { size: "small", buttonRole: "primary", onClick: () => element.filterSortModal.showModal() }, h("div", null, element.filter && element.sortEnabled() ? (h("gcds-icon", { name: "tune", size: "h5", "margin-right": "50" })) : element.filter ? (h("gcds-icon", { name: "filter", size: "h5", "margin-right": "50" })) : (h("gcds-icon", { name: "arrow-up-down", size: "h5", "margin-right": "50" })), element.filter && element.sortEnabled()
+        ? I18N[lang].filterAndSort
+        : element.filter
+            ? I18N[lang].filter
+            : I18N[lang].sort, filterValue && (h(Fragment, null, h("gcds-sr-only", { tag: "span" }, ":"), h("span", { class: "gcds-table__active-count", "aria-label": `${I18N[lang].activeBadgeLabel.replace('{count}', 1)}` }, "1"))))), h("dialog", { class: "gcds-table__modal", "aria-modal": "true", "aria-labelledby": "gcds-table__modal-heading", ref: el => (element.filterSortModal = el) }, h("div", { class: "gcds-table__modal-header" }, h("gcds-heading", { tag: "h2", id: "gcds-table__modal-heading", marginTop: "0", marginBottom: "0" }, I18N[lang].filterAndSort), h("gcds-button", { "button-role": "secondary", onClick: () => {
             element.filterSortModal.close();
             if (element.filter) {
                 element.filterInput.value = element.initialFilter;

@@ -748,7 +748,10 @@ export namespace Components {
         /**
           * Name of the icon.
          */
-        "name": | 'checkmark-circle'
+        "name": | 'arrow-down'
+    | 'arrow-up'
+    | 'arrow-up-down'
+    | 'checkmark-circle'
     | 'chevron-down'
     | 'chevron-left'
     | 'chevron-right'
@@ -758,9 +761,12 @@ export namespace Components {
     | 'email'
     | 'exclamation-circle'
     | 'external'
+    | 'filter'
     | 'info-circle'
     | 'phone'
     | 'search'
+    | 'sort'
+    | 'tune'
     | 'warning-triangle';
         /**
           * Defines the size of the icon.
@@ -1365,6 +1371,9 @@ export namespace Components {
          */
         "totalSteps": number;
     }
+    /**
+     * A table is a structured layout of related data in rows and columns.
+     */
     interface GcdsTable {
         /**
           * Column definitions
@@ -2294,6 +2303,9 @@ declare global {
     interface HTMLGcdsTableElementEventMap {
         "gcdsTableStateChange": GcdsTableStateChange;
     }
+    /**
+     * A table is a structured layout of related data in rows and columns.
+     */
     interface HTMLGcdsTableElement extends Components.GcdsTable, HTMLStencilElement {
         addEventListener<K extends keyof HTMLGcdsTableElementEventMap>(type: K, listener: (this: HTMLGcdsTableElement, ev: GcdsTableCustomEvent<HTMLGcdsTableElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
@@ -3261,7 +3273,10 @@ declare namespace LocalJSX {
         /**
           * Name of the icon.
          */
-        "name": | 'checkmark-circle'
+        "name": | 'arrow-down'
+    | 'arrow-up'
+    | 'arrow-up-down'
+    | 'checkmark-circle'
     | 'chevron-down'
     | 'chevron-left'
     | 'chevron-right'
@@ -3271,9 +3286,12 @@ declare namespace LocalJSX {
     | 'email'
     | 'exclamation-circle'
     | 'external'
+    | 'filter'
     | 'info-circle'
     | 'phone'
     | 'search'
+    | 'sort'
+    | 'tune'
     | 'warning-triangle';
         /**
           * Defines the size of the icon.
@@ -3983,6 +4001,9 @@ declare namespace LocalJSX {
          */
         "totalSteps": number;
     }
+    /**
+     * A table is a structured layout of related data in rows and columns.
+     */
     interface GcdsTable {
         /**
           * Column definitions
@@ -4401,6 +4422,9 @@ declare module "@stencil/core" {
              * A stepper is a progress tracker for a multi-step process.
              */
             "gcds-stepper": LocalJSX.GcdsStepper & JSXBase.HTMLAttributes<HTMLGcdsStepperElement>;
+            /**
+             * A table is a structured layout of related data in rows and columns.
+             */
             "gcds-table": LocalJSX.GcdsTable & JSXBase.HTMLAttributes<HTMLGcdsTableElement>;
             /**
              * Text is a styled and formatted paragraph that displays written content in an accessible way and matches Canada.ca typography styles.

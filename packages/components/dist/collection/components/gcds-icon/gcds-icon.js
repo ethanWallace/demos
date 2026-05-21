@@ -12,6 +12,9 @@ export class GcdsIcon {
     }
     validateName(newValue) {
         const values = [
+            'arrow-down',
+            'arrow-up',
+            'arrow-up-down',
             'checkmark-circle',
             'chevron-down',
             'chevron-left',
@@ -22,9 +25,12 @@ export class GcdsIcon {
             'email',
             'exclamation-circle',
             'external',
+            'filter',
             'info-circle',
             'phone',
             'search',
+            'sort',
+            'tune',
             'warning-triangle',
         ];
         if (!values.includes(newValue)) {
@@ -54,7 +60,7 @@ export class GcdsIcon {
     }
     render() {
         const { label, marginLeft, marginRight, name, size } = this;
-        return (h(Host, { key: 'cb27f69445e385805d3c2b52b21a6fbbe53ebb61' }, h("span", { key: '0285f889cdac2ccedf88c03e8e02cbdcc5ade5d1', class: `
+        return (h(Host, { key: '69756aae425a88b36d8d56718696f3ada91c8f02' }, h("span", { key: 'ed743ade6011d81a308291f69ed553b63c98e2f8', class: `
             gcds-icon gcds-icon-${name}
             ${marginLeft ? `ml-${marginLeft}` : ''}
             ${marginRight ? `mr-${marginRight}` : ''}
@@ -149,8 +155,8 @@ export class GcdsIcon {
                 "attribute": "name",
                 "mutable": true,
                 "complexType": {
-                    "original": "| 'checkmark-circle'\n    | 'chevron-down'\n    | 'chevron-left'\n    | 'chevron-right'\n    | 'chevron-up'\n    | 'close'\n    | 'download'\n    | 'email'\n    | 'exclamation-circle'\n    | 'external'\n    | 'info-circle'\n    | 'phone'\n    | 'search'\n    | 'warning-triangle'",
-                    "resolved": "\"checkmark-circle\" | \"chevron-down\" | \"chevron-left\" | \"chevron-right\" | \"chevron-up\" | \"close\" | \"download\" | \"email\" | \"exclamation-circle\" | \"external\" | \"info-circle\" | \"phone\" | \"search\" | \"warning-triangle\"",
+                    "original": "| 'arrow-down'\n    | 'arrow-up'\n    | 'arrow-up-down'\n    | 'checkmark-circle'\n    | 'chevron-down'\n    | 'chevron-left'\n    | 'chevron-right'\n    | 'chevron-up'\n    | 'close'\n    | 'download'\n    | 'email'\n    | 'exclamation-circle'\n    | 'external'\n    | 'filter'\n    | 'info-circle'\n    | 'phone'\n    | 'search'\n    | 'sort'\n    | 'tune'\n    | 'warning-triangle'",
+                    "resolved": "\"arrow-down\" | \"arrow-up\" | \"arrow-up-down\" | \"checkmark-circle\" | \"chevron-down\" | \"chevron-left\" | \"chevron-right\" | \"chevron-up\" | \"close\" | \"download\" | \"email\" | \"exclamation-circle\" | \"external\" | \"filter\" | \"info-circle\" | \"phone\" | \"search\" | \"sort\" | \"tune\" | \"warning-triangle\"",
                     "references": {}
                 },
                 "required": true,

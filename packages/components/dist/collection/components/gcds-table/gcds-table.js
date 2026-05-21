@@ -4,6 +4,12 @@ import { assignLanguage } from "../../utils/utils";
 import I18N from "./i18n/i18n";
 import { buildInitialSorting, buildTableOptions, updateTableOptions, } from "./utils/table-helpers";
 import { getSortIcon, getSortTitle, renderTableStatus, renderFilterSortModal, renderFilterPills, renderSortPills, } from "./utils/render-helpers";
+/**
+ * A table is a structured layout of related data in rows and columns.
+ *
+ * @slot caption - Slot to give an accessible name to the table, so that assistive technologies can identify it and announce it.
+ * @slot cell:<field> - Slot to assign HTML content to a table cell, where <field> corresponds to the `field` property of a column definition.
+ */
 export class GcdsTable {
     constructor() {
         // ─── Props ────────────────────────────────────────────────────────────────
@@ -23,6 +29,7 @@ export class GcdsTable {
          * Available page-size options.
          * Use 0 to represent "All rows".
          */
+        // prettier-ignore
         this.paginationSizeOptions = [10, 25, 50, 0];
         /** Enable global filter */
         this.filter = false;
@@ -36,7 +43,9 @@ export class GcdsTable {
         this.paginationState = {
             pageIndex: Math.max(0, this.paginationCurrentPage - 1),
             pageSize: this.pagination
-                ? (this.paginationSize === 0 ? Number.MAX_SAFE_INTEGER : this.paginationSize)
+                ? this.paginationSize === 0
+                    ? Number.MAX_SAFE_INTEGER
+                    : this.paginationSize
                 : Number.MAX_SAFE_INTEGER,
         };
         // TanStack table instance (not reactive – mutations trigger re-renders via @State)
@@ -91,7 +100,9 @@ export class GcdsTable {
         if (newVal) {
             this.paginationState = {
                 pageIndex: Math.max(0, this.paginationCurrentPage - 1),
-                pageSize: this.paginationSize === 0 ? Number.MAX_SAFE_INTEGER : this.paginationSize,
+                pageSize: this.paginationSize === 0
+                    ? Number.MAX_SAFE_INTEGER
+                    : this.paginationSize,
             };
         }
         else {
@@ -122,8 +133,7 @@ export class GcdsTable {
         }
         else {
             this.paginationState = {
-                pageIndex: this.paginationState.pageIndex + 1 >
-                    Math.ceil(totalRows / newSize)
+                pageIndex: this.paginationState.pageIndex + 1 > Math.ceil(totalRows / newSize)
                     ? 0
                     : this.paginationState.pageIndex,
                 pageSize: newSize === 0 ? totalRows : newSize,
@@ -180,8 +190,7 @@ export class GcdsTable {
     }
     sortEnabled() {
         var _a;
-        return (this.sort ||
-            ((_a = this.columns) !== null && _a !== void 0 ? _a : []).some(col => col.sort));
+        return (this.sort || ((_a = this.columns) !== null && _a !== void 0 ? _a : []).some(col => col.sort));
     }
     getTemplate(columnKey) {
         return this.el.querySelector(`template[slot="cell:${columnKey}"]`);
@@ -395,7 +404,9 @@ export class GcdsTable {
         }), renderSortPills(this.sorting, this.table, this.lang, (columnId) => {
             this.sorting = this.sorting.filter(s => s.id !== columnId);
             updateTableOptions(this);
-        })), h("div", { class: "gcds-table__row-management" }, this.pagination && (h("div", { class: "gcds-table__page-size" }, h("gcds-select", { label: I18N[this.lang].rowsPerPage, name: "page-size", selectId: "gcds-table-page-size", value: this.paginationSize.toString(), onChange: e => this.handlePageSizeSelect(e) }, this.paginationSizeOptions.map(opt => (h("option", { key: opt, value: opt }, opt === 0 ? I18N[this.lang].all : opt)))))), h("span", { class: "gcds-table__page-info", role: "status", "aria-live": "polite" }, renderTableStatus(this.el, this.table, this.paginationState, this.lang))), h("table", { class: "gcds-table__table", tabindex: "-1", "aria-labelledby": this.el.querySelector('[slot="caption"]') ? 'gcds-table__caption' : undefined, ref: el => {
+        })), h("div", { class: "gcds-table__row-management" }, this.pagination && (h("div", { class: "gcds-table__page-size" }, h("gcds-select", { label: I18N[this.lang].rowsPerPage, name: "page-size", selectId: "gcds-table-page-size", value: this.paginationSize.toString(), onChange: e => this.handlePageSizeSelect(e) }, this.paginationSizeOptions.map(opt => (h("option", { key: opt, value: opt }, opt === 0 ? I18N[this.lang].all : opt)))))), h("span", { class: "gcds-table__page-info", role: "status", "aria-live": "polite" }, renderTableStatus(this.el, this.table, this.paginationState, this.lang))), h("table", { class: "gcds-table__table", tabindex: "-1", "aria-labelledby": this.el.querySelector('[slot="caption"]')
+                ? 'gcds-table__caption'
+                : undefined, ref: el => {
                 if (el)
                     this.shadowElement = el;
             } }, h("thead", null, headerGroups.map(hg => (h("tr", { key: hg.id }, hg.headers.map(header => {
@@ -405,6 +416,7 @@ export class GcdsTable {
             const alignmentClass = (colDef === null || colDef === void 0 ? void 0 : colDef.alignment)
                 ? `alignment-${colDef.alignment}`
                 : '';
+            const iconName = getSortIcon(header.column);
             return (h("th", { key: header.id, class: `gcds-table__th ${alignmentClass}`, scope: "col", "aria-sort": header.column.getIsSorted() === 'asc'
                     ? 'ascending'
                     : header.column.getIsSorted() === 'desc'
@@ -412,11 +424,8 @@ export class GcdsTable {
                         : canSort
                             ? 'none'
                             : undefined }, canSort ? (h("button", { onClick: () => this.handleSortToggle(header.id), title: getSortTitle(header.column, this.lang) }, colDef === null || colDef === void 0 ? void 0 :
-                colDef.header, h("span", { class: "gcds-table__sort-icon", "aria-hidden": "true" }, getSortIcon(header.column)))) : (colDef === null || colDef === void 0 ? void 0 : colDef.header)));
-        }))))), h("tbody", null, rows.length === 0 ? (h("tr", null, h("td", { class: "gcds-table__empty", colSpan: ((_a = this.columns) !== null && _a !== void 0 ? _a : []).length }, this.filter && this.filterValue !== '' ?
-            h("div", null, h("gcds-heading", { tag: "h3", "heading-role": 'secondary' }, I18N[this.lang].noResultsHeading), h("gcds-text", { "text-role": 'secondary' }, I18N[this.lang].noResultsText), h("gcds-button", { onClick: () => this.filterValue = this.initialFilter }, I18N[this.lang].noResultsClearFilter))
-            :
-                h("div", null, h("gcds-heading", { tag: "h3", "heading-role": 'secondary' }, I18N[this.lang].noDataHeading), h("gcds-text", { "text-role": 'secondary' }, I18N[this.lang].noDataText))))) : (rows.map(row => (h("tr", { key: row.id, "data-test": row.id, class: "gcds-table__row" }, row.getVisibleCells().map(cell => {
+                colDef.header, iconName && (h("gcds-icon", { name: iconName, class: "gcds-table__sort-icon", "aria-hidden": "true" })))) : (colDef === null || colDef === void 0 ? void 0 : colDef.header)));
+        }))))), h("tbody", null, rows.length === 0 ? (h("tr", null, h("td", { class: "gcds-table__empty", colSpan: ((_a = this.columns) !== null && _a !== void 0 ? _a : []).length }, this.filter && this.filterValue !== '' ? (h("div", null, h("gcds-heading", { tag: "h3", "heading-role": "secondary", "margin-top": "0", "margin-bottom": "100" }, I18N[this.lang].noResultsHeading), h("gcds-text", { "text-role": "secondary", "margin-bottom": "200" }, I18N[this.lang].noResultsText), h("gcds-button", { onClick: () => (this.filterValue = this.initialFilter) }, I18N[this.lang].noResultsClearFilter))) : (h("div", null, h("gcds-heading", { tag: "h3", "heading-role": "secondary", "margin-top": "0", "margin-bottom": "100" }, I18N[this.lang].noDataHeading), h("gcds-text", { "text-role": "secondary", "margin-bottom": "0" }, I18N[this.lang].noDataText)))))) : (rows.map(row => (h("tr", { key: row.id, "data-test": row.id, class: "gcds-table__row" }, row.getVisibleCells().map(cell => {
             var _a, _b;
             const colDef = ((_a = this.columns) !== null && _a !== void 0 ? _a : []).find(c => c.field === cell.column.id);
             const isSlotted = colDef === null || colDef === void 0 ? void 0 : colDef.slotted;
@@ -431,11 +440,9 @@ export class GcdsTable {
                 };
             }
             const fallbackValue = String((_b = cell.getValue()) !== null && _b !== void 0 ? _b : '');
-            cellContent = !isSlotted
-                ? fallbackValue
-                : (h("slot", { name: this.getManagedSlotName(row.id, cell.column.id) }, fallbackValue));
+            cellContent = !isSlotted ? (fallbackValue) : (h("slot", { name: this.getManagedSlotName(row.id, cell.column.id) }, fallbackValue));
             return (h(Tag, Object.assign({ key: cell.id, class: `gcds-table__td${(colDef === null || colDef === void 0 ? void 0 : colDef.alignment) ? ` alignment-${colDef.alignment}` : ''}`, "data-column": colDef === null || colDef === void 0 ? void 0 : colDef.header, "data-cell": `${cell.column.id}-${row.id}` }, scope), cellContent));
-        }))))))), this.pagination && this.paginationSize !== 0 && (h("gcds-pagination", { display: "list", currentPage: this.paginationState.pageIndex + 1, totalPages: this.table.getPageCount(), label: I18N[this.lang].paginationLabel, onGcdsClick: e => this.handlePaginationClick(e) }))), h("slot", null)));
+        }))))))), this.pagination && this.paginationSize !== 0 && (h("gcds-pagination", { display: "list", currentPage: this.paginationState.pageIndex + 1, totalPages: this.table.getPageCount(), label: I18N[this.lang].paginationLabel, onGcdsClick: e => this.handlePaginationClick(e) })))));
     }
     static get is() { return "gcds-table"; }
     static get encapsulation() { return "shadow"; }
