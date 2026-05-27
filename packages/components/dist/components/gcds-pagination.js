@@ -1,2 +1,1 @@
-import{G as o,d as s}from"./p-Ddiu_CuJ.js";const t=o;const p=s;export{t as GcdsPagination,p as defineCustomElement};
-//# sourceMappingURL=gcds-pagination.js.map
+import{G as o,d as s}from"./p-BicA4RPH.js";const p=o,r=s;export{p as GcdsPagination,r as defineCustomElement}

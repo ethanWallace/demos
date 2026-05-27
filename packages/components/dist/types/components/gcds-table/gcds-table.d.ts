@@ -51,7 +51,7 @@ export declare class GcdsTable {
     onPaginationChange(newVal: boolean): void;
     onPageChange(newPage: number): void;
     onPageSizeChange(newSize: number): void;
-    onSizeOptionsChange(newVal: number[]): void;
+    onSizeOptionsChange(newVal: string | number[]): void;
     onFilterValueChange(newVal: string): void;
     onLangChange(newVal: string): void;
     private initTable;

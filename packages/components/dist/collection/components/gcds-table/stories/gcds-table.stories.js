@@ -247,4 +247,3 @@ ColumnsRowHeader.args = Object.assign(Object.assign({}, defaultTableProperties),
 // ------ Table playground ------
 export const Playground = TemplatePlayground.bind({});
 Playground.args = defaultTableProperties;
-//# sourceMappingURL=gcds-table.stories.js.map

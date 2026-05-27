@@ -36,7 +36,7 @@ const I18N = {
     sort: 'Sort',
   },
   fr: {
-    activeBadgeLabel: '{count} filtrer actifs',
+    activeBadgeLabel: '{count} filtre actif',
     all: 'Tout',
     asc: 'asc',
     ascending: 'Ascendant',
@@ -56,7 +56,7 @@ const I18N = {
     noResultsHeading: 'Aucun résultat pour ce filtre',
     noResultsText: 'Effacez ou modifiez le filtre pour afficher des résultats.',
     noResultsClearFilter: 'Effacer le filtre',
-    paginationLabel: 'Table pagination',
+    paginationLabel: 'Pagination du tableau',
     pillFilter: 'Filtrer :',
     pillRemoveFilter: 'Cliquer pour enlever le filtre',
     pillRemoveSort: 'Cliquer pour enlever le tri',

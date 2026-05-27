@@ -60,7 +60,7 @@ export class GcdsIcon {
     }
     render() {
         const { label, marginLeft, marginRight, name, size } = this;
-        return (h(Host, { key: '69756aae425a88b36d8d56718696f3ada91c8f02' }, h("span", { key: 'ed743ade6011d81a308291f69ed553b63c98e2f8', class: `
+        return (h(Host, { key: '447a454486166e31b5d75b782f24d741e8ecf51f' }, h("span", { key: 'a114b9edb1972f636c7116d51afb0c83c481fe9a', class: `
             gcds-icon gcds-icon-${name}
             ${marginLeft ? `ml-${marginLeft}` : ''}
             ${marginRight ? `mr-${marginRight}` : ''}
@@ -83,7 +83,6 @@ export class GcdsIcon {
         return {
             "label": {
                 "type": "string",
-                "attribute": "label",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -98,20 +97,21 @@ export class GcdsIcon {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "label"
             },
             "marginLeft": {
                 "type": "string",
-                "attribute": "margin-left",
                 "mutable": false,
                 "complexType": {
                     "original": "SpacingValues",
-                    "resolved": "\"0\" | \"25\" | \"50\" | \"75\" | \"100\" | \"125\" | \"150\" | \"175\" | \"200\" | \"225\" | \"250\" | \"300\" | \"350\" | \"400\" | \"450\" | \"500\" | \"550\" | \"600\" | \"650\" | \"700\" | \"750\" | \"800\" | \"850\" | \"900\" | \"950\" | \"1000\" | \"1050\" | \"1100\" | \"1150\" | \"1200\" | \"1250\"",
+                    "resolved": "\"0\" | \"100\" | \"1000\" | \"1050\" | \"1100\" | \"1150\" | \"1200\" | \"125\" | \"1250\" | \"150\" | \"175\" | \"200\" | \"225\" | \"25\" | \"250\" | \"300\" | \"350\" | \"400\" | \"450\" | \"50\" | \"500\" | \"550\" | \"600\" | \"650\" | \"700\" | \"75\" | \"750\" | \"800\" | \"850\" | \"900\" | \"950\"",
                     "references": {
                         "SpacingValues": {
                             "location": "import",
                             "path": "../../utils/types/spacing",
-                            "id": "src/utils/types/spacing.tsx::SpacingValues"
+                            "id": "src/utils/types/spacing.tsx::SpacingValues",
+                            "referenceLocation": "SpacingValues"
                         }
                     }
                 },
@@ -123,20 +123,21 @@ export class GcdsIcon {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "margin-left"
             },
             "marginRight": {
                 "type": "string",
-                "attribute": "margin-right",
                 "mutable": false,
                 "complexType": {
                     "original": "SpacingValues",
-                    "resolved": "\"0\" | \"25\" | \"50\" | \"75\" | \"100\" | \"125\" | \"150\" | \"175\" | \"200\" | \"225\" | \"250\" | \"300\" | \"350\" | \"400\" | \"450\" | \"500\" | \"550\" | \"600\" | \"650\" | \"700\" | \"750\" | \"800\" | \"850\" | \"900\" | \"950\" | \"1000\" | \"1050\" | \"1100\" | \"1150\" | \"1200\" | \"1250\"",
+                    "resolved": "\"0\" | \"100\" | \"1000\" | \"1050\" | \"1100\" | \"1150\" | \"1200\" | \"125\" | \"1250\" | \"150\" | \"175\" | \"200\" | \"225\" | \"25\" | \"250\" | \"300\" | \"350\" | \"400\" | \"450\" | \"50\" | \"500\" | \"550\" | \"600\" | \"650\" | \"700\" | \"75\" | \"750\" | \"800\" | \"850\" | \"900\" | \"950\"",
                     "references": {
                         "SpacingValues": {
                             "location": "import",
                             "path": "../../utils/types/spacing",
-                            "id": "src/utils/types/spacing.tsx::SpacingValues"
+                            "id": "src/utils/types/spacing.tsx::SpacingValues",
+                            "referenceLocation": "SpacingValues"
                         }
                     }
                 },
@@ -148,16 +149,22 @@ export class GcdsIcon {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "margin-right"
             },
             "name": {
                 "type": "string",
-                "attribute": "name",
                 "mutable": true,
                 "complexType": {
-                    "original": "| 'arrow-down'\n    | 'arrow-up'\n    | 'arrow-up-down'\n    | 'checkmark-circle'\n    | 'chevron-down'\n    | 'chevron-left'\n    | 'chevron-right'\n    | 'chevron-up'\n    | 'close'\n    | 'download'\n    | 'email'\n    | 'exclamation-circle'\n    | 'external'\n    | 'filter'\n    | 'info-circle'\n    | 'phone'\n    | 'search'\n    | 'sort'\n    | 'tune'\n    | 'warning-triangle'",
+                    "original": "IconNames",
                     "resolved": "\"arrow-down\" | \"arrow-up\" | \"arrow-up-down\" | \"checkmark-circle\" | \"chevron-down\" | \"chevron-left\" | \"chevron-right\" | \"chevron-up\" | \"close\" | \"download\" | \"email\" | \"exclamation-circle\" | \"external\" | \"filter\" | \"info-circle\" | \"phone\" | \"search\" | \"sort\" | \"tune\" | \"warning-triangle\"",
-                    "references": {}
+                    "references": {
+                        "IconNames": {
+                            "location": "local",
+                            "path": "/Users/ethanwallace/Documents/work/gcds-components/packages/web/src/components/gcds-icon/gcds-icon.tsx",
+                            "id": "src/components/gcds-icon/gcds-icon.tsx::IconNames"
+                        }
+                    }
                 },
                 "required": true,
                 "optional": false,
@@ -167,11 +174,11 @@ export class GcdsIcon {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "name"
             },
             "size": {
                 "type": "string",
-                "attribute": "size",
                 "mutable": false,
                 "complexType": {
                     "original": "| 'inherit'\n    | 'text-small'\n    | 'text'\n    | 'h6'\n    | 'h5'\n    | 'h4'\n    | 'h3'\n    | 'h2'\n    | 'h1'",
@@ -187,6 +194,7 @@ export class GcdsIcon {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "size",
                 "defaultValue": "'inherit'"
             }
         };
@@ -202,4 +210,3 @@ export class GcdsIcon {
             }];
     }
 }
-//# sourceMappingURL=gcds-icon.js.map

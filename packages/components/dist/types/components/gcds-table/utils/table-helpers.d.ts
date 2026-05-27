@@ -6,8 +6,8 @@ import { type SortingState, type ColumnDef } from '@tanstack/table-core';
  * @property {'asc' | 'desc'} [sortDirection] - The current sort direction of the column on load.
  * @property {'start' | 'center' | 'end'} [alignment] - The alignment of the cell content.
  * @property {boolean} [sort] - Whether the column is sortable.
- * @property {(value: unknown, row: Record<string, unknown>) => any} [renderCell] - A function to customize cell rendering.
  * @property {boolean} [rowHeader] - Whether GcdsTable column should be treated as a row header (for accessibility).
+ * @property {boolean} [slotted] - Whether the column content is provided via a named slot instead of the data prop.
  */
 interface TableColumn {
     field: string;
@@ -28,8 +28,7 @@ export interface GcdsTableStateChange {
     page: number;
     pageSize: number;
     filterValue: string;
-    sortKey: string | null;
-    sortDirection: 'asc' | 'desc' | false;
+    sorting: SortingState | null;
 }
 declare const buildInitialSorting: (columns: TableColumn[] | undefined) => SortingState;
 declare const buildColumnDefs: (columns: TableColumn[] | undefined, sort: boolean) => ColumnDef<Record<string, unknown>>[];
@@ -60,4 +59,5 @@ declare const buildTableOptions: (GcdsTable: any) => {
     autoResetPageIndex: boolean;
 };
 declare const updateTableOptions: (GcdsTable: any) => void;
-export { TableColumn, buildInitialSorting, buildColumnDefs, buildTableOptions, updateTableOptions, };
+declare const parseSizeOptions: (options: string | number[]) => number[];
+export { TableColumn, buildInitialSorting, buildColumnDefs, buildTableOptions, updateTableOptions, parseSizeOptions, };

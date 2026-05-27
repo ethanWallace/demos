@@ -78,5 +78,29 @@ const updateTableOptions = (GcdsTable) => {
         GcdsTable.sorting = [...GcdsTable.sorting];
     }
 };
-export { buildInitialSorting, buildColumnDefs, buildTableOptions, updateTableOptions, };
-//# sourceMappingURL=table-helpers.js.map
+const parseSizeOptions = (options) => {
+    const defaultValue = [10, 25, 50, 0];
+    if (typeof options === 'string') {
+        try {
+            const parsed = JSON.parse(options);
+            if (Array.isArray(parsed) &&
+                parsed.every(opt => typeof opt === 'number')) {
+                return parsed;
+            }
+            else {
+                console.error('[gcds-table] Invalid pagination-size-options format. Expected JSON array of numbers.');
+                return defaultValue;
+            }
+        }
+        catch (e) {
+            console.error('[gcds-table] Error parsing pagination-size-options:', e);
+            return defaultValue;
+        }
+    }
+    if (Array.isArray(options) && options.every(v => typeof v === 'number')) {
+        return options;
+    }
+    console.error('[gcds-table] Invalid pagination-size-options type. Expected string or array of numbers.');
+    return defaultValue;
+};
+export { buildInitialSorting, buildColumnDefs, buildTableOptions, updateTableOptions, parseSizeOptions, };

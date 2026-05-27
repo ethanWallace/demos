@@ -1,2 +1,1 @@
-import{G as o,d as s}from"./p-_w4A4pAS.js";const p=o;const t=s;export{p as GcdsBreadcrumbsItem,t as defineCustomElement};
-//# sourceMappingURL=gcds-breadcrumbs-item.js.map
+import{G as s,d as o}from"./p-DKOfsGMf.js";const f=s,p=o;export{f as GcdsBreadcrumbsItem,p as defineCustomElement}

@@ -99,7 +99,6 @@ export class GcdsSearch {
         return {
             "placeholder": {
                 "type": "string",
-                "attribute": "placeholder",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -115,11 +114,11 @@ export class GcdsSearch {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "placeholder",
                 "defaultValue": "'Canada.ca'"
             },
             "action": {
                 "type": "string",
-                "attribute": "action",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -135,11 +134,11 @@ export class GcdsSearch {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "action",
                 "defaultValue": "'/sr/srb.html'"
             },
             "method": {
                 "type": "string",
-                "attribute": "method",
                 "mutable": false,
                 "complexType": {
                     "original": "'get' | 'post'",
@@ -155,11 +154,11 @@ export class GcdsSearch {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "method",
                 "defaultValue": "'get'"
             },
             "name": {
                 "type": "string",
-                "attribute": "name",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -175,11 +174,11 @@ export class GcdsSearch {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "name",
                 "defaultValue": "'q'"
             },
             "searchId": {
                 "type": "string",
-                "attribute": "search-id",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -195,11 +194,11 @@ export class GcdsSearch {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "search-id",
                 "defaultValue": "'search'"
             },
             "value": {
                 "type": "string",
-                "attribute": "value",
                 "mutable": true,
                 "complexType": {
                     "original": "string",
@@ -214,11 +213,11 @@ export class GcdsSearch {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "value"
             },
             "suggested": {
                 "type": "string",
-                "attribute": "suggested",
                 "mutable": true,
                 "complexType": {
                     "original": "string[] | string",
@@ -233,7 +232,8 @@ export class GcdsSearch {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "suggested"
             }
         };
     }
@@ -329,4 +329,3 @@ export class GcdsSearch {
             }];
     }
 }
-//# sourceMappingURL=gcds-search.js.map

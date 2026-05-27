@@ -91,7 +91,7 @@ export class GcdsHeader {
     }
     render() {
         const { renderSkipToNav, renderToggle, renderSignature, renderSearch, hasSearch, hasBanner, hasBreadcrumb, hasAccount, hasThemeTopicMenu, } = this;
-        return (h(Host, { key: '9fd063dd0539efb37e4d41b35f7b8078f6912fe0', role: "banner" }, renderSkipToNav, hasBanner ? h("slot", { name: "banner" }) : null, h("div", { key: '0079ad9eda976dc6b6873d201a61b80e89b22a92', class: "gcds-header__brand" }, h("div", { key: '47ee01dbea84f15e6a5bcf8ec887602e0a8aac6e', class: `brand__container ${!hasSearch ? 'container--simple' : ''}` }, renderToggle, renderSignature, renderSearch)), hasThemeTopicMenu ? (h("div", { class: "gcds-header__container--menu" }, h("slot", { name: "menu" }), hasAccount ? h("slot", { name: "account" }) : null)) : h("slot", { name: "menu" }), hasBreadcrumb || (!hasBreadcrumb && !hasThemeTopicMenu && hasAccount) ? (h("div", { class: "gcds-header__container--breadcrumbs" }, hasBreadcrumb ? h("slot", { name: "breadcrumb" }) : null, hasAccount && !hasThemeTopicMenu ? h("slot", { name: "account" }) : null)) : null));
+        return (h(Host, { key: '25c9114f95330e8a16d1cf69d4927423b8f64ff7', role: "banner" }, renderSkipToNav, hasBanner ? h("slot", { name: "banner" }) : null, h("div", { key: 'd9ac7c2d0fb7db251b738ba652d2ba524b64efd7', class: "gcds-header__brand" }, h("div", { key: '11ab18238d458cb665d1481a4080a53b194b148b', class: `brand__container ${!hasSearch ? 'container--simple' : ''}` }, renderToggle, renderSignature, renderSearch)), hasThemeTopicMenu ? (h("div", { class: "gcds-header__container--menu" }, h("slot", { name: "menu" }), hasAccount ? h("slot", { name: "account" }) : null)) : h("slot", { name: "menu" }), hasBreadcrumb || (!hasBreadcrumb && !hasThemeTopicMenu && hasAccount) ? (h("div", { class: "gcds-header__container--breadcrumbs" }, hasBreadcrumb ? h("slot", { name: "breadcrumb" }) : null, hasAccount && !hasThemeTopicMenu ? h("slot", { name: "account" }) : null)) : null));
     }
     static get is() { return "gcds-header"; }
     static get encapsulation() { return "shadow"; }
@@ -109,7 +109,6 @@ export class GcdsHeader {
         return {
             "langHref": {
                 "type": "string",
-                "attribute": "lang-href",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -124,11 +123,11 @@ export class GcdsHeader {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": true
+                "reflect": true,
+                "attribute": "lang-href"
             },
             "signatureHasLink": {
                 "type": "boolean",
-                "attribute": "signature-has-link",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -144,11 +143,11 @@ export class GcdsHeader {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "signature-has-link",
                 "defaultValue": "true"
             },
             "skipToHref": {
                 "type": "string",
-                "attribute": "skip-to-href",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -163,7 +162,8 @@ export class GcdsHeader {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "skip-to-href"
             }
         };
     }
@@ -222,4 +222,3 @@ export class GcdsHeader {
     }
     static get elementRef() { return "el"; }
 }
-//# sourceMappingURL=gcds-header.js.map

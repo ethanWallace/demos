@@ -41,7 +41,6 @@ export class GcdsLangToggle {
         return {
             "href": {
                 "type": "string",
-                "attribute": "href",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -56,7 +55,8 @@ export class GcdsLangToggle {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": true
+                "reflect": true,
+                "attribute": "href"
             }
         };
     }
@@ -115,4 +115,3 @@ export class GcdsLangToggle {
     }
     static get elementRef() { return "el"; }
 }
-//# sourceMappingURL=gcds-lang-toggle.js.map

@@ -102,18 +102,18 @@ export class GcdsNavGroup {
     }
     render() {
         const { closeTrigger, menuLabel, open, openTrigger } = this;
-        return (h(Host, { key: '8cba49f224e4d63954ba4bc3d91cf7db6f0e4923', role: "listitem", open: open }, h("div", { key: '80a76c44db22078f2be2d5ddcb2575f4b4e0dcc8', class: "gcds-nav-group__container" }, h("button", { key: '9230f7189eb1a178cf644440e9b9853af792eaab', "aria-haspopup": "true", tabIndex: 0, "aria-expanded": open.toString(), ref: element => (this.triggerElement = element), class: `gcds-nav-group__trigger gcds-trigger--${this.navStyle}`, onBlur: () => this.gcdsBlur.emit(), onFocus: () => this.gcdsFocus.emit(), onClick: e => {
+        return (h(Host, { key: '35428e90e183130456e1c7f80231621e82b04690', role: "listitem", open: open }, h("div", { key: 'cee8d305928e4a3a15359e628f4123d5a106a3dd', class: "gcds-nav-group__container" }, h("button", { key: 'e2498be00124fcc55a05d5f8bd5b84e62d819f4d', "aria-haspopup": "true", tabIndex: 0, "aria-expanded": open.toString(), ref: element => (this.triggerElement = element), class: `gcds-nav-group__trigger gcds-trigger--${this.navStyle}`, onBlur: () => this.gcdsBlur.emit(), onFocus: () => this.gcdsFocus.emit(), onClick: e => {
                 const event = emitEvent(e, this.gcdsClick);
                 if (event) {
                     this.toggleNav();
                 }
-            } }, h("gcds-icon", { key: 'd014bd69dc8d8e552292c1f18bc82c96488deea9', name: this.navStyle === 'expandable'
+            } }, h("gcds-icon", { key: 'b0f8639723d0719737c91a746dfc29ccef9d9ddf', name: (this.navStyle === 'expandable'
                 ? open
                     ? 'chevron-down'
                     : 'chevron-right'
                 : open
                     ? 'chevron-up'
-                    : 'chevron-down' }), closeTrigger && open ? closeTrigger : openTrigger), h("ul", { key: 'f539e98b85d067de9a53ed07ce0d6f24ca1ed3cb', "aria-label": menuLabel, class: `gcds-nav-group__list gcds-nav--${this.navStyle}` }, h("slot", { key: '0ece17ae3b236863bfd90cd5d8759295deeb0032' })))));
+                    : 'chevron-down') }), closeTrigger && open ? closeTrigger : openTrigger), h("ul", { key: 'c1f4082ff6112488786ace93d9316ee6e6befb50', "aria-label": menuLabel, class: `gcds-nav-group__list gcds-nav--${this.navStyle}` }, h("slot", { key: '46e0d5e8bb9cee9bbef1fbd4b826e55f20c89137' })))));
     }
     static get is() { return "gcds-nav-group"; }
     static get encapsulation() { return "shadow"; }
@@ -131,7 +131,6 @@ export class GcdsNavGroup {
         return {
             "closeTrigger": {
                 "type": "string",
-                "attribute": "close-trigger",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -146,11 +145,11 @@ export class GcdsNavGroup {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": true
+                "reflect": true,
+                "attribute": "close-trigger"
             },
             "menuLabel": {
                 "type": "string",
-                "attribute": "menu-label",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -165,11 +164,11 @@ export class GcdsNavGroup {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": true
+                "reflect": true,
+                "attribute": "menu-label"
             },
             "openTrigger": {
                 "type": "string",
-                "attribute": "open-trigger",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -184,11 +183,11 @@ export class GcdsNavGroup {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": true
+                "reflect": true,
+                "attribute": "open-trigger"
             },
             "open": {
                 "type": "boolean",
-                "attribute": "open",
                 "mutable": true,
                 "complexType": {
                     "original": "boolean",
@@ -204,6 +203,7 @@ export class GcdsNavGroup {
                 "getter": false,
                 "setter": false,
                 "reflect": true,
+                "attribute": "open",
                 "defaultValue": "false"
             }
         };
@@ -316,4 +316,3 @@ export class GcdsNavGroup {
             }];
     }
 }
-//# sourceMappingURL=gcds-nav-group.js.map

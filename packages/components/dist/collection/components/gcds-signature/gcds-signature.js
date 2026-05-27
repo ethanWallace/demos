@@ -102,7 +102,6 @@ export class GcdsSignature {
         return {
             "type": {
                 "type": "string",
-                "attribute": "type",
                 "mutable": true,
                 "complexType": {
                     "original": "'signature' | 'wordmark'",
@@ -118,11 +117,11 @@ export class GcdsSignature {
                 "getter": false,
                 "setter": false,
                 "reflect": true,
+                "attribute": "type",
                 "defaultValue": "'signature'"
             },
             "variant": {
                 "type": "string",
-                "attribute": "variant",
                 "mutable": true,
                 "complexType": {
                     "original": "'colour' | 'white'",
@@ -138,11 +137,11 @@ export class GcdsSignature {
                 "getter": false,
                 "setter": false,
                 "reflect": true,
+                "attribute": "variant",
                 "defaultValue": "'colour'"
             },
             "hasLink": {
                 "type": "boolean",
-                "attribute": "has-link",
                 "mutable": true,
                 "complexType": {
                     "original": "boolean",
@@ -158,6 +157,7 @@ export class GcdsSignature {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "has-link",
                 "defaultValue": "false"
             }
         };
@@ -178,4 +178,3 @@ export class GcdsSignature {
             }];
     }
 }
-//# sourceMappingURL=gcds-signature.js.map

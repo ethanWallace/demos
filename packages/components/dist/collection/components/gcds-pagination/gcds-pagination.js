@@ -208,7 +208,6 @@ export class GcdsPagination {
         return {
             "display": {
                 "type": "string",
-                "attribute": "display",
                 "mutable": false,
                 "complexType": {
                     "original": "'list' | 'simple'",
@@ -224,11 +223,11 @@ export class GcdsPagination {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "display",
                 "defaultValue": "'list'"
             },
             "label": {
                 "type": "string",
-                "attribute": "label",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -243,11 +242,11 @@ export class GcdsPagination {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "label"
             },
             "previousHref": {
                 "type": "string",
-                "attribute": "previous-href",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -262,11 +261,11 @@ export class GcdsPagination {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "previous-href"
             },
             "previousLabel": {
                 "type": "string",
-                "attribute": "previous-label",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -281,11 +280,11 @@ export class GcdsPagination {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": true
+                "reflect": true,
+                "attribute": "previous-label"
             },
             "nextHref": {
                 "type": "string",
-                "attribute": "next-href",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -300,11 +299,11 @@ export class GcdsPagination {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "next-href"
             },
             "nextLabel": {
                 "type": "string",
-                "attribute": "next-label",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -319,11 +318,11 @@ export class GcdsPagination {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": true
+                "reflect": true,
+                "attribute": "next-label"
             },
             "totalPages": {
                 "type": "number",
-                "attribute": "total-pages",
                 "mutable": false,
                 "complexType": {
                     "original": "number",
@@ -338,11 +337,11 @@ export class GcdsPagination {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "total-pages"
             },
             "currentPage": {
                 "type": "number",
-                "attribute": "current-page",
                 "mutable": false,
                 "complexType": {
                     "original": "number",
@@ -357,11 +356,11 @@ export class GcdsPagination {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": true
+                "reflect": true,
+                "attribute": "current-page"
             },
             "url": {
                 "type": "string",
-                "attribute": "url",
                 "mutable": false,
                 "complexType": {
                     "original": "string | object",
@@ -376,7 +375,8 @@ export class GcdsPagination {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "url"
             }
         };
     }
@@ -451,4 +451,3 @@ export class GcdsPagination {
             }];
     }
 }
-//# sourceMappingURL=gcds-pagination.js.map

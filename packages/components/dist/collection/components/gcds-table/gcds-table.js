@@ -2,7 +2,7 @@ import { Host, h, } from "@stencil/core";
 import { createTable, } from "@tanstack/table-core";
 import { assignLanguage } from "../../utils/utils";
 import I18N from "./i18n/i18n";
-import { buildInitialSorting, buildTableOptions, updateTableOptions, } from "./utils/table-helpers";
+import { buildInitialSorting, buildTableOptions, updateTableOptions, parseSizeOptions, } from "./utils/table-helpers";
 import { getSortIcon, getSortTitle, renderTableStatus, renderFilterSortModal, renderFilterPills, renderSortPills, } from "./utils/render-helpers";
 /**
  * A table is a structured layout of related data in rows and columns.
@@ -83,7 +83,7 @@ export class GcdsTable {
                 this.data = JSON.parse(newVal);
             }
             catch (e) {
-                console.error('[gcds-table] Invalid JSON in column-data:', e);
+                console.error('[gcds-table] Invalid JSON in data property:', e);
             }
         }
         updateTableOptions(this);
@@ -146,10 +146,7 @@ export class GcdsTable {
     onSizeOptionsChange(newVal) {
         if (this.isInitializing)
             return;
-        if (!Array.isArray(newVal)) {
-            this.paginationSizeOptions = [10, 25, 50, 0];
-            return;
-        }
+        this.paginationSizeOptions = parseSizeOptions(newVal);
         updateTableOptions(this);
     }
     onFilterValueChange(newVal) {
@@ -173,7 +170,7 @@ export class GcdsTable {
         this.table = createTable(buildTableOptions(this));
     }
     emitStateChangeIfDirty() {
-        var _a, _b, _c, _d, _e;
+        var _a, _b;
         const rows = (_b = (_a = this.table) === null || _a === void 0 ? void 0 : _a.getRowModel().rows) !== null && _b !== void 0 ? _b : [];
         // Compute a stable fingerprint of the current visible row set
         const rowIdFingerprint = rows.map(r => r.id).join(',');
@@ -190,8 +187,7 @@ export class GcdsTable {
             page: this.paginationState.pageIndex + 1,
             pageSize: this.paginationSize,
             filterValue: this.filterValue,
-            sortKey: (_d = (_c = this.sorting[0]) === null || _c === void 0 ? void 0 : _c.id) !== null && _d !== void 0 ? _d : null,
-            sortDirection: ((_e = this.sorting[0]) === null || _e === void 0 ? void 0 : _e.desc) ? 'desc' : 'asc',
+            sorting: this.sorting.length > 0 ? this.sorting : null,
         });
     }
     sortEnabled() {
@@ -228,8 +224,6 @@ export class GcdsTable {
             else {
                 el.setAttribute(prop, String(value !== null && value !== void 0 ? value : ''));
             }
-            // remove data-bind- attribute from final element
-            el.removeAttribute(binding.name);
         }
     }
     /*
@@ -377,6 +371,7 @@ export class GcdsTable {
                 console.error(e);
             }
         }
+        this.paginationSizeOptions = parseSizeOptions(this.paginationSizeOptions);
         // Seed initial sort from sortDirection column definitions
         if (this.sortEnabled()) {
             this.sorting = buildInitialSorting(this.columns);
@@ -448,7 +443,9 @@ export class GcdsTable {
             const fallbackValue = String((_b = cell.getValue()) !== null && _b !== void 0 ? _b : '');
             cellContent = !isSlotted ? (fallbackValue) : (h("slot", { name: this.getManagedSlotName(row.id, cell.column.id) }, fallbackValue));
             return (h(Tag, Object.assign({ key: cell.id, class: `gcds-table__td${(colDef === null || colDef === void 0 ? void 0 : colDef.alignment) ? ` alignment-${colDef.alignment}` : ''}`, "data-column": colDef === null || colDef === void 0 ? void 0 : colDef.header, "data-cell": `${cell.column.id}-${row.id}` }, scope), cellContent));
-        }))))))), this.pagination && this.paginationSize !== 0 && rows.length != 0 && (h("gcds-pagination", { display: "list", currentPage: this.paginationState.pageIndex + 1, totalPages: this.table.getPageCount(), label: I18N[this.lang].paginationLabel, onGcdsClick: e => this.handlePaginationClick(e), lang: this.lang })))));
+        }))))))), (this.pagination && this.paginationSize !== 0 && rows.length != 0) &&
+            (this.table.getFilteredRowModel().rows.length > this.paginationSize) &&
+            (h("gcds-pagination", { display: "list", currentPage: this.paginationState.pageIndex + 1, totalPages: this.table.getPageCount(), label: I18N[this.lang].paginationLabel, onGcdsClick: e => this.handlePaginationClick(e), lang: this.lang })))));
     }
     static get is() { return "gcds-table"; }
     static get encapsulation() { return "shadow"; }
@@ -466,7 +463,6 @@ export class GcdsTable {
         return {
             "columns": {
                 "type": "string",
-                "attribute": "columns",
                 "mutable": true,
                 "complexType": {
                     "original": "string | TableColumn[]",
@@ -475,7 +471,8 @@ export class GcdsTable {
                         "TableColumn": {
                             "location": "import",
                             "path": "./utils/table-helpers",
-                            "id": "src/components/gcds-table/utils/table-helpers.ts::TableColumn"
+                            "id": "src/components/gcds-table/utils/table-helpers.ts::TableColumn",
+                            "referenceLocation": "TableColumn"
                         }
                     }
                 },
@@ -488,11 +485,11 @@ export class GcdsTable {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "columns",
                 "defaultValue": "[]"
             },
             "data": {
                 "type": "string",
-                "attribute": "data",
                 "mutable": true,
                 "complexType": {
                     "original": "string | object[]",
@@ -508,11 +505,11 @@ export class GcdsTable {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "data",
                 "defaultValue": "[]"
             },
             "sort": {
                 "type": "boolean",
-                "attribute": "sort",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -528,11 +525,11 @@ export class GcdsTable {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "sort",
                 "defaultValue": "false"
             },
             "pagination": {
                 "type": "boolean",
-                "attribute": "pagination",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -548,11 +545,11 @@ export class GcdsTable {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "pagination",
                 "defaultValue": "false"
             },
             "paginationCurrentPage": {
                 "type": "number",
-                "attribute": "pagination-current-page",
                 "mutable": true,
                 "complexType": {
                     "original": "number",
@@ -568,11 +565,11 @@ export class GcdsTable {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "pagination-current-page",
                 "defaultValue": "1"
             },
             "paginationSize": {
                 "type": "number",
-                "attribute": "pagination-size",
                 "mutable": true,
                 "complexType": {
                     "original": "number",
@@ -588,11 +585,11 @@ export class GcdsTable {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "pagination-size",
                 "defaultValue": "10"
             },
             "paginationSizeOptions": {
                 "type": "string",
-                "attribute": "pagination-size-options",
                 "mutable": true,
                 "complexType": {
                     "original": "string | number[]",
@@ -608,11 +605,11 @@ export class GcdsTable {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "pagination-size-options",
                 "defaultValue": "[10, 25, 50, 0]"
             },
             "filter": {
                 "type": "boolean",
-                "attribute": "filter",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -628,11 +625,11 @@ export class GcdsTable {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "filter",
                 "defaultValue": "false"
             },
             "filterValue": {
                 "type": "string",
-                "attribute": "filter-value",
                 "mutable": true,
                 "complexType": {
                     "original": "string",
@@ -648,6 +645,7 @@ export class GcdsTable {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "filter-value",
                 "defaultValue": "''"
             }
         };
@@ -679,7 +677,8 @@ export class GcdsTable {
                         "GcdsTableStateChange": {
                             "location": "import",
                             "path": "./utils/table-helpers",
-                            "id": "src/components/gcds-table/utils/table-helpers.ts::GcdsTableStateChange"
+                            "id": "src/components/gcds-table/utils/table-helpers.ts::GcdsTableStateChange",
+                            "referenceLocation": "GcdsTableStateChange"
                         }
                     }
                 }
@@ -742,4 +741,3 @@ export class GcdsTable {
             }];
     }
 }
-//# sourceMappingURL=gcds-table.js.map

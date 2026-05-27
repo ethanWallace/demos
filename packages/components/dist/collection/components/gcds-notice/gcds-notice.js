@@ -109,7 +109,6 @@ export class GcdsNotice {
         return {
             "noticeRole": {
                 "type": "string",
-                "attribute": "notice-role",
                 "mutable": false,
                 "complexType": {
                     "original": "'danger' | 'info' | 'success' | 'warning'",
@@ -124,11 +123,11 @@ export class GcdsNotice {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "notice-role"
             },
             "noticeTitle": {
                 "type": "string",
-                "attribute": "notice-title",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -143,11 +142,11 @@ export class GcdsNotice {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "notice-title"
             },
             "noticeTitleTag": {
                 "type": "string",
-                "attribute": "notice-title-tag",
                 "mutable": false,
                 "complexType": {
                     "original": "'h2' | 'h3' | 'h4' | 'h5'",
@@ -162,7 +161,8 @@ export class GcdsNotice {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "notice-title-tag"
             }
         };
     }
@@ -174,4 +174,3 @@ export class GcdsNotice {
     }
     static get elementRef() { return "el"; }
 }
-//# sourceMappingURL=gcds-notice.js.map

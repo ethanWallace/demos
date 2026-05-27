@@ -141,7 +141,6 @@ export class GcdsSideNav {
         return {
             "label": {
                 "type": "string",
-                "attribute": "label",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -156,7 +155,8 @@ export class GcdsSideNav {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "label"
             }
         };
     }
@@ -263,4 +263,3 @@ export class GcdsSideNav {
             }];
     }
 }
-//# sourceMappingURL=gcds-side-nav.js.map

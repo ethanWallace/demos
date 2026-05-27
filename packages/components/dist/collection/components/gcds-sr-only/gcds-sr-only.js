@@ -41,7 +41,6 @@ export class GcdsSrOnly {
         return {
             "tag": {
                 "type": "string",
-                "attribute": "tag",
                 "mutable": true,
                 "complexType": {
                     "original": "| 'h1'\n    | 'h2'\n    | 'h3'\n    | 'h4'\n    | 'h5'\n    | 'h6'\n    | 'p'\n    | 'span'",
@@ -57,6 +56,7 @@ export class GcdsSrOnly {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "tag",
                 "defaultValue": "'p'"
             }
         };
@@ -68,4 +68,3 @@ export class GcdsSrOnly {
             }];
     }
 }
-//# sourceMappingURL=gcds-sr-only.js.map

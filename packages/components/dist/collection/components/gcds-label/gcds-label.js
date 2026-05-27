@@ -42,7 +42,6 @@ export class GcdsLabel {
         return {
             "hideLabel": {
                 "type": "boolean",
-                "attribute": "hide-label",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -57,11 +56,11 @@ export class GcdsLabel {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "hide-label"
             },
             "label": {
                 "type": "string",
-                "attribute": "label",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -76,11 +75,11 @@ export class GcdsLabel {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "label"
             },
             "labelFor": {
                 "type": "string",
-                "attribute": "label-for",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -95,11 +94,11 @@ export class GcdsLabel {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "label-for"
             },
             "required": {
                 "type": "boolean",
-                "attribute": "required",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -114,7 +113,8 @@ export class GcdsLabel {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "required"
             }
         };
     }
@@ -125,4 +125,3 @@ export class GcdsLabel {
     }
     static get elementRef() { return "el"; }
 }
-//# sourceMappingURL=gcds-label.js.map

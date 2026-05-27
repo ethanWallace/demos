@@ -157,7 +157,6 @@ export class GcdsTopNav {
         return {
             "label": {
                 "type": "string",
-                "attribute": "label",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -172,11 +171,11 @@ export class GcdsTopNav {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "label"
             },
             "alignment": {
                 "type": "string",
-                "attribute": "alignment",
                 "mutable": false,
                 "complexType": {
                     "original": "'start' | 'end'",
@@ -192,6 +191,7 @@ export class GcdsTopNav {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "alignment",
                 "defaultValue": "'start'"
             }
         };
@@ -299,4 +299,3 @@ export class GcdsTopNav {
             }];
     }
 }
-//# sourceMappingURL=gcds-top-nav.js.map

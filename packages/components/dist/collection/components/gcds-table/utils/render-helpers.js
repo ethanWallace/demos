@@ -144,7 +144,7 @@ const getSortValue = (sort) => {
 };
 const renderFilterSortModal = element => {
     const { filter, filterValue, lang } = element;
-    return (h("div", { class: "gcds-table__filters" }, h("gcds-button", { size: "small", buttonRole: "primary", onClick: () => element.filterSortModal.showModal() }, h("div", null, element.filter && element.sortEnabled() ? (h("gcds-icon", { name: "tune", size: "h5", "margin-right": "50" })) : element.filter ? (h("gcds-icon", { name: "filter", size: "h5", "margin-right": "50" })) : (h("gcds-icon", { name: "sort", size: "h5", "margin-right": "50" })), element.filter && element.sortEnabled()
+    return (h("div", { class: "gcds-table__filters" }, h("gcds-button", { size: "small", "button-role": "primary", onClick: () => element.filterSortModal.showModal() }, h("div", null, element.filter && element.sortEnabled() ? (h("gcds-icon", { name: "tune", size: "h5", "margin-right": "50" })) : element.filter ? (h("gcds-icon", { name: "filter", size: "h5", "margin-right": "50" })) : (h("gcds-icon", { name: "sort", size: "h5", "margin-right": "50" })), element.filter && element.sortEnabled()
         ? I18N[lang].filterAndSort
         : element.filter
             ? I18N[lang].filter
@@ -204,4 +204,3 @@ const renderSortPills = (sorting, table, lang, onRemove) => {
         })));
 };
 export { getSortIcon, getSortTitle, renderActiveBadge, renderTableStatus, renderSortRadios, renderFilterSortModal, renderFilterPills, renderSortPills, };
-//# sourceMappingURL=render-helpers.js.map

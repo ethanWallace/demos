@@ -97,7 +97,6 @@ export class GcdsStepper {
         return {
             "currentStep": {
                 "type": "number",
-                "attribute": "current-step",
                 "mutable": true,
                 "complexType": {
                     "original": "number",
@@ -112,11 +111,11 @@ export class GcdsStepper {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "current-step"
             },
             "totalSteps": {
                 "type": "number",
-                "attribute": "total-steps",
                 "mutable": true,
                 "complexType": {
                     "original": "number",
@@ -131,11 +130,11 @@ export class GcdsStepper {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "total-steps"
             },
             "tag": {
                 "type": "string",
-                "attribute": "tag",
                 "mutable": false,
                 "complexType": {
                     "original": "'h1' | 'h2' | 'h3'",
@@ -151,6 +150,7 @@ export class GcdsStepper {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "tag",
                 "defaultValue": "'h2'"
             }
         };
@@ -172,4 +172,3 @@ export class GcdsStepper {
             }];
     }
 }
-//# sourceMappingURL=gcds-stepper.js.map

@@ -127,7 +127,6 @@ export class GcdsLink {
         return {
             "linkRole": {
                 "type": "string",
-                "attribute": "link-role",
                 "mutable": true,
                 "complexType": {
                     "original": "'default' | 'light'",
@@ -143,11 +142,11 @@ export class GcdsLink {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "link-role",
                 "defaultValue": "'default'"
             },
             "size": {
                 "type": "string",
-                "attribute": "size",
                 "mutable": true,
                 "complexType": {
                     "original": "'regular' | 'small' | 'inherit'",
@@ -163,11 +162,11 @@ export class GcdsLink {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "size",
                 "defaultValue": "'inherit'"
             },
             "display": {
                 "type": "string",
-                "attribute": "display",
                 "mutable": true,
                 "complexType": {
                     "original": "'block' | 'inline'",
@@ -183,11 +182,11 @@ export class GcdsLink {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "display",
                 "defaultValue": "'inline'"
             },
             "href": {
                 "type": "string",
-                "attribute": "href",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -202,11 +201,11 @@ export class GcdsLink {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "href"
             },
             "rel": {
                 "type": "string",
-                "attribute": "rel",
                 "mutable": false,
                 "complexType": {
                     "original": "string | undefined",
@@ -221,11 +220,11 @@ export class GcdsLink {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "rel"
             },
             "target": {
                 "type": "string",
-                "attribute": "target",
                 "mutable": false,
                 "complexType": {
                     "original": "string",
@@ -241,11 +240,11 @@ export class GcdsLink {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "target",
                 "defaultValue": "'_self'"
             },
             "external": {
                 "type": "boolean",
-                "attribute": "external",
                 "mutable": false,
                 "complexType": {
                     "original": "boolean",
@@ -261,11 +260,11 @@ export class GcdsLink {
                 "getter": false,
                 "setter": false,
                 "reflect": false,
+                "attribute": "external",
                 "defaultValue": "false"
             },
             "download": {
                 "type": "string",
-                "attribute": "download",
                 "mutable": false,
                 "complexType": {
                     "original": "string | undefined",
@@ -280,11 +279,11 @@ export class GcdsLink {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "download"
             },
             "type": {
                 "type": "string",
-                "attribute": "type",
                 "mutable": false,
                 "complexType": {
                     "original": "string | undefined",
@@ -299,7 +298,8 @@ export class GcdsLink {
                 },
                 "getter": false,
                 "setter": false,
-                "reflect": false
+                "reflect": false,
+                "attribute": "type"
             }
         };
     }
@@ -371,4 +371,3 @@ export class GcdsLink {
             }];
     }
 }
-//# sourceMappingURL=gcds-link.js.map

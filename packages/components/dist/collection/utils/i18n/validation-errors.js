@@ -120,4 +120,3 @@ export const componentValidationErrors = {
     'gcds-checkboxes': ['requiredCheckboxGroup', 'requiredCheckboxSingle'],
     'gcds-date-input': ['rangeUnderflow', 'rangeOverflow', 'dateInput'],
 };
-//# sourceMappingURL=validation-errors.js.map
