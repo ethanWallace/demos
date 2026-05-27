@@ -8,6 +8,7 @@ import { type SortingState, type ColumnDef } from '@tanstack/table-core';
  * @property {boolean} [sort] - Whether the column is sortable.
  * @property {boolean} [rowHeader] - Whether GcdsTable column should be treated as a row header (for accessibility).
  * @property {boolean} [slotted] - Whether the column content is provided via a named slot instead of the data prop.
+ * @property {boolean} [managed] - Internal-only property. Not intended for public use. Automatically set to `true` when dynamic slots are managed by the framework.
  */
 interface TableColumn {
     field: string;
