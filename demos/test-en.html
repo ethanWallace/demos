@@ -1,0 +1,33 @@
+<!doctype html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <title>English test</title>
+
+    <script type="module" src="../packages/component-display/dist/component-display/component-display.esm.js"></script>
+    <script nomodule src="../packages/component-display/dist/component-display/component-display.js"></script>
+
+    <!-- GC Design System -->
+    <link rel="stylesheet" href="../packages/components/dist/gcds/gcds.css" />
+    <script type="module" src="../packages/components/dist/gcds/gcds.esm.js"></script>
+
+    <!-- GC Design System Utility -->
+    <link rel="stylesheet" href="https://cdn.design-system.canada.ca/@gcds-core/css-shortcuts@latest/dist/gcds-css-shortcuts.min.css" />
+  </head>
+  <body>
+    <gcds-container layout="page" tag="main" class="pt-300">
+      <gcds-heading tag="h1">English test</gcds-heading>
+
+      <component-display class="mt-300" id="table-display" accessibility>
+        <gcds-input
+          input-id="input-default"
+          label="Label"
+          name="example-default"
+          hint="Hint / example message."
+          required
+        ></gcds-input>
+      </component-display>
+    </gcds-container>
+  </body>
+</html>
