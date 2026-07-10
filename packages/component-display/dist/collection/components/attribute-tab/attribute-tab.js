@@ -64,7 +64,7 @@ export class AttributeTab {
      * --------------------------- */
     render() {
         const { lang } = this;
-        return (h(Host, { key: 'ad41a5f59b62aed6dab12414114d4950563fd5bb', role: "tabpanel", tabindex: "0" }, h("table", { key: 'a863b8e6cc2b73613b549bb27f519d7e4eaa8120', class: "attributes" }, h("tr", { key: '0305dfc4c2d206bcb630090e7fac813903d47fb2' }, h("th", { key: '91bd2f4a1d402848d1b2e15e5c860579b987335a' }, i18n[lang].attributes), h("th", { key: '0b42c1ad7e9a10c19c2045fb817e46c2cb82448e' }, i18n[lang].type), h("th", { key: '6402421cb9ad340daa4afc43009dd8cc8f6979ad' }, i18n[lang].defaultValue), h("th", { key: 'dec1a008673cf2c052a0e79b21e780668ea4d183' }, i18n[lang].control)), this.attributeObject &&
+        return (h(Host, { key: 'ad41a5f59b62aed6dab12414114d4950563fd5bb', role: "tabpanel", tabindex: "0" }, h("table", { key: 'a863b8e6cc2b73613b549bb27f519d7e4eaa8120', class: "attributes" }, h("tr", { key: '0305dfc4c2d206bcb630090e7fac813903d47fb2' }, h("th", { key: '91bd2f4a1d402848d1b2e15e5c860579b987335a' }, i18n[lang].attributes), h("th", { key: '0b42c1ad7e9a10c19c2045fb817e46c2cb82448e' }, i18n[lang].type), h("th", { key: '6402421cb9ad340daa4afc43009dd8cc8f6979ad' }, i18n[lang].defaultValue), h("th", { key: 'dec1a008673cf2c052a0e79b21e780668ea4d183' }, i18n[lang].value)), this.attributeObject &&
             this.attributeObject.map(attr => {
                 let control = '';
                 let displayValue = this.displayElement.getAttribute(attr.name) != null ? this.displayElement.getAttribute(attr.name) : attr?.defaultValue;

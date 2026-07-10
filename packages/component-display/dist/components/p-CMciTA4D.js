@@ -33526,15 +33526,15 @@ const I18N = {
     test: 'Test',
   },
   fr: {
-    runTest: 'Run accessibility test (TODO FR)',
-    runningTest: 'Running accessibility test (TODO FR)',
-    issues: 'issue(s) found. Please reference table below for more details. (TODO FR)',
-    noIssues: 'No issues found. Please reference table below to see passed tests. (TODO FR)',
-    violationID: 'Violation ID (TODO FR)',
-    description: 'Description (TODO FR)',
-    affected: 'Affected Element(s) (TODO FR)',
-    summary: 'Failure Summary (TODO FR)',
-    test: 'Test (TODO FR)',
+    runTest: "Exécuter le test d'accessibilité",
+    runningTest: "Exécution du test d'accessibilité",
+    issues: 'problème(s) trouvé(s). Consultez le tableau ci-dessous pour plus de détails.',
+    noIssues: 'Aucun problème trouvé. Consultez le tableau ci-dessous pour voir les tests réussis.',
+    violationID: 'ID de la violation',
+    description: 'Description',
+    affected: 'Élément(s) concerné(s)',
+    summary: "Résumé de l'échec",
+    test: 'Test',
   },
 };
 
@@ -33664,6 +33664,6 @@ function defineCustomElement() {
 defineCustomElement();
 
 export { AccessibilityTab as A, defineCustomElement as d };
-//# sourceMappingURL=p-Co_oV2ZN.js.map
+//# sourceMappingURL=p-CMciTA4D.js.map
 
-//# sourceMappingURL=p-Co_oV2ZN.js.map
+//# sourceMappingURL=p-CMciTA4D.js.map

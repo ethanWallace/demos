@@ -1378,7 +1378,6 @@ var purify = createDOMPurify();
 
 const I18N = {
   en: {
-    caption: 'Slots allow passing text or HTML elements to the component. Modify the HTML values to update the displayed component.',
     name: 'Slot name',
     description: 'Description',
     control: 'Control',
@@ -1386,7 +1385,6 @@ const I18N = {
     slotSanitized: 'The slot content contains invalid or unsafe HTML and has been sanitized.',
   },
   fr: {
-    caption: 'Slots allow passing text or HTML elements to the component. Modify the HTML values to update the displayed component. (TODO FR)',
     name: 'Slot name (TODO FR)',
     description: 'Description',
     control: 'Contrôle',
@@ -1492,7 +1490,7 @@ const SlotsTab = /*@__PURE__*/ proxyCustomElement(class SlotsTab extends H {
      * --------------------------- */
     render() {
         const { lang } = this;
-        return (h(Host, { key: '9f040a19939ee9cc84b6c96a765e93de2b43c539', role: "tabpanel", tabindex: "0" }, h("table", { key: '3642da27e526629473be7d9725d8135cc6dfda9c', class: "slots" }, h("caption", { key: '4131a8bced4641a3bf7c7e23e47aa90f73537176' }, I18N[lang].caption), h("tr", { key: '69f110e61d8bc1434119c1d26c58d3891a6e51c6' }, h("th", { key: '13b43a140a5d466e91df71e54bcb4dfa5a595d45' }, I18N[lang].name), h("th", { key: 'e5eda0f40194f857d6de22a9a41780d5ed80b9bf' }, I18N[lang].description), h("th", { key: '3fa003d97da3b77231769b7bd41d09f68cf06092' }, I18N[lang].control)), this.slotObject.map(slot => {
+        return (h(Host, { key: '3d94137d0158791a3f2206606b636bc10b50a159', role: "tabpanel", tabindex: "0" }, h("table", { key: '9d8cb73e235d2a64c1127d7c98dd6771db40c9ec', class: "slots" }, h("tr", { key: '7a5cb95dd9f89e091010f8feff0f696a5b5b3e7c' }, h("th", { key: '806ebfaab39667d709e3b2f6d875dedbe1a0c756' }, I18N[lang].name), h("th", { key: 'ecf0e503e95138324b8ce697e947c54cdcdf85a2' }, I18N[lang].description), h("th", { key: '207b80d57adfa0af91a6e306b7a1072abe1b5e80' }, I18N[lang].control)), this.slotObject.map(slot => {
             this.lastInputValue = { ...this.lastInputValue, [slot.name]: this.slotHistory[slot.name] };
             const control = (h("gcds-textarea", { label: slot.name, textareaId: slot.name, name: slot.name, hideLabel: true, value: this.slotHistory[slot.name], "error-message": this.slotErrors[slot.name], "validate-on": "other", onChange: e => this.emitSlotEvent(e), onFocus: e => this.onFocusStartInterval(e), onBlur: this.onBlurClearInterval, lang: this.lang }));
             return (h("tr", null, h("td", { "data-label": formatDataLabel(I18N[lang].name, lang) }, slot.name), h("td", { "data-label": formatDataLabel(I18N[lang].description, lang) }, slot.description), h("td", null, control)));
@@ -1523,6 +1521,6 @@ function defineCustomElement() {
 defineCustomElement();
 
 export { SlotsTab as S, defineCustomElement as d };
-//# sourceMappingURL=p-hC5x3iiW.js.map
+//# sourceMappingURL=p-BigYrTU1.js.map
 
-//# sourceMappingURL=p-hC5x3iiW.js.map
+//# sourceMappingURL=p-BigYrTU1.js.map

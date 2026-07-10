@@ -33652,15 +33652,15 @@ const I18N$5 = {
     test: 'Test',
   },
   fr: {
-    runTest: 'Run accessibility test (TODO FR)',
-    runningTest: 'Running accessibility test (TODO FR)',
-    issues: 'issue(s) found. Please reference table below for more details. (TODO FR)',
-    noIssues: 'No issues found. Please reference table below to see passed tests. (TODO FR)',
-    violationID: 'Violation ID (TODO FR)',
-    description: 'Description (TODO FR)',
-    affected: 'Affected Element(s) (TODO FR)',
-    summary: 'Failure Summary (TODO FR)',
-    test: 'Test (TODO FR)',
+    runTest: "Exécuter le test d'accessibilité",
+    runningTest: "Exécution du test d'accessibilité",
+    issues: 'problème(s) trouvé(s). Consultez le tableau ci-dessous pour plus de détails.',
+    noIssues: 'Aucun problème trouvé. Consultez le tableau ci-dessous pour voir les tests réussis.',
+    violationID: 'ID de la violation',
+    description: 'Description',
+    affected: 'Élément(s) concerné(s)',
+    summary: "Résumé de l'échec",
+    test: 'Test',
   },
 };
 
@@ -33773,7 +33773,7 @@ const I18N$4 = {
     attributes: 'Attribute',
     type: 'Type',
     defaultValue: 'Default value',
-    control: 'Control',
+    value: 'Value',
     noType: 'No type specified',
     noDefaultValue: 'No default value',
     required: ' (required)',
@@ -33782,7 +33782,7 @@ const I18N$4 = {
     attributes: 'Attribut',
     type: 'Type',
     defaultValue: 'Valeur par défaut',
-    control: 'Contrôle',
+    value: 'Valeur',
     noType: 'Aucun type spécifié',
     noDefaultValue: 'Aucune valeur par défaut',
     required: ' (obligatoire)',
@@ -33859,7 +33859,7 @@ const AttributeTab = class {
      * --------------------------- */
     render() {
         const { lang } = this;
-        return (h(Host, { key: 'ad41a5f59b62aed6dab12414114d4950563fd5bb', role: "tabpanel", tabindex: "0" }, h("table", { key: 'a863b8e6cc2b73613b549bb27f519d7e4eaa8120', class: "attributes" }, h("tr", { key: '0305dfc4c2d206bcb630090e7fac813903d47fb2' }, h("th", { key: '91bd2f4a1d402848d1b2e15e5c860579b987335a' }, I18N$4[lang].attributes), h("th", { key: '0b42c1ad7e9a10c19c2045fb817e46c2cb82448e' }, I18N$4[lang].type), h("th", { key: '6402421cb9ad340daa4afc43009dd8cc8f6979ad' }, I18N$4[lang].defaultValue), h("th", { key: 'dec1a008673cf2c052a0e79b21e780668ea4d183' }, I18N$4[lang].control)), this.attributeObject &&
+        return (h(Host, { key: 'ad41a5f59b62aed6dab12414114d4950563fd5bb', role: "tabpanel", tabindex: "0" }, h("table", { key: 'a863b8e6cc2b73613b549bb27f519d7e4eaa8120', class: "attributes" }, h("tr", { key: '0305dfc4c2d206bcb630090e7fac813903d47fb2' }, h("th", { key: '91bd2f4a1d402848d1b2e15e5c860579b987335a' }, I18N$4[lang].attributes), h("th", { key: '0b42c1ad7e9a10c19c2045fb817e46c2cb82448e' }, I18N$4[lang].type), h("th", { key: '6402421cb9ad340daa4afc43009dd8cc8f6979ad' }, I18N$4[lang].defaultValue), h("th", { key: 'dec1a008673cf2c052a0e79b21e780668ea4d183' }, I18N$4[lang].value)), this.attributeObject &&
             this.attributeObject.map(attr => {
                 let control = '';
                 let displayValue = this.displayElement.getAttribute(attr.name) != null ? this.displayElement.getAttribute(attr.name) : attr?.defaultValue;
@@ -36295,7 +36295,6 @@ CodeFrame.style = prismCss + codeFrameCss;
 
 const I18N$2 = {
   en: {
-    tabsHeading: 'Component API',
     tabsAttributes: 'Attributes',
     tabsSlots: 'Slots',
     tabsEvents: 'Events',
@@ -36305,7 +36304,6 @@ const I18N$2 = {
     frameworkUpdateStatus: 'The code preview for "{name}" has been updated.',
   },
   fr: {
-    tabsHeading: 'Component API (TODO FR)',
     tabsAttributes: 'Attributs',
     tabsSlots: 'Fentes',
     tabsEvents: 'Événements',
@@ -36525,7 +36523,7 @@ const ComponentDisplay = class {
      * --------------------------- */
     render() {
         const { lang } = this;
-        return (h(Host, { key: 'e920cc6d04392d57453ee1aaf06f4362d6461b31' }, h("code-frame", { key: '2a9bbd1131e3257f4e2d200701925f18575c05ea', source: this.codeSource, landmarkDisplay: this.landmarkDisplay, accessibility: this.accessibility, framework: this.framework, lang: this.lang }, h("slot", { key: '283320a0a37b0d06142c22e42827c587228b429a' })), this.attributeObject || this.slotObject || this.eventObject || this.accessibility ? (h("div", { id: "tabs" }, h("gcds-heading", { tag: "h4" }, I18N$2[lang].tabsHeading), h("div", { role: "tablist" }, this.attributeObject && (h("gcds-button", { id: "attrs", "button-role": "secondary", role: "presentation", onClick: () => this.setDisplay('attrs'), class: this.display == 'attrs' && 'selected' }, I18N$2[lang].tabsAttributes)), this.slotObject && (h("gcds-button", { id: "slots", "button-role": "secondary", role: "presentation", class: this.display == 'slots' && 'selected', onClick: () => this.setDisplay('slots') }, I18N$2[lang].tabsSlots)), this.eventObject && (h("gcds-button", { id: "events", "button-role": "secondary", role: "presentation", class: this.display == 'events' && 'selected', onClick: () => this.setDisplay('events') }, I18N$2[lang].tabsEvents)), this.accessibility && (h("gcds-button", { id: "a11y", "button-role": "secondary", role: "presentation", class: this.display == 'a11y' && 'selected', onClick: () => this.setDisplay('a11y') }, I18N$2[lang].tabsA11y))), this.attributeObject && (h("attribute-tab", { displayElement: this.displayElement, attributeObject: this.attributeObject, class: this.display != 'attrs' && 'hidden' })), this.slotObject && (h("slots-tab", { displayElement: this.displayElement, slotObject: this.slotObject, slotHistory: this.slotHistory, class: this.display != 'slots' && 'hidden' })), this.eventObject && h("events-tab", { eventObject: this.eventObject, class: this.display != 'events' && 'hidden' }), this.accessibility && (h("accessibility-tab", { displayElement: this.displayElement, class: `tabs--accessibility${this.display != 'a11y' ? ' hidden' : ''}`, landmarkDisplay: this.landmarkDisplay, lang: this.lang })))) : null, h("gcds-sr-only", { key: 'e9f0c083ffde18e3c1a7c6399f503d1beb9e7d17', tag: "span" }, h("span", { key: 'a70e2ca590b841904fffc0c855e9ec2687412c35', id: "change-status", role: "status", "aria-atomic": "true", "aria-relevant": "removals" }))));
+        return (h(Host, { key: 'e920cc6d04392d57453ee1aaf06f4362d6461b31' }, h("code-frame", { key: '2a9bbd1131e3257f4e2d200701925f18575c05ea', source: this.codeSource, landmarkDisplay: this.landmarkDisplay, accessibility: this.accessibility, framework: this.framework, lang: this.lang }, h("slot", { key: '283320a0a37b0d06142c22e42827c587228b429a' })), this.attributeObject || this.slotObject || this.eventObject || this.accessibility ? (h("div", { id: "tabs" }, h("div", { role: "tablist" }, this.attributeObject && (h("gcds-button", { id: "attrs", "button-role": "secondary", role: "presentation", onClick: () => this.setDisplay('attrs'), class: this.display == 'attrs' && 'selected' }, I18N$2[lang].tabsAttributes)), this.slotObject && (h("gcds-button", { id: "slots", "button-role": "secondary", role: "presentation", class: this.display == 'slots' && 'selected', onClick: () => this.setDisplay('slots') }, I18N$2[lang].tabsSlots)), this.eventObject && (h("gcds-button", { id: "events", "button-role": "secondary", role: "presentation", class: this.display == 'events' && 'selected', onClick: () => this.setDisplay('events') }, I18N$2[lang].tabsEvents)), this.accessibility && (h("gcds-button", { id: "a11y", "button-role": "secondary", role: "presentation", class: this.display == 'a11y' && 'selected', onClick: () => this.setDisplay('a11y') }, I18N$2[lang].tabsA11y))), this.attributeObject && (h("attribute-tab", { displayElement: this.displayElement, attributeObject: this.attributeObject, class: this.display != 'attrs' && 'hidden' })), this.slotObject && (h("slots-tab", { displayElement: this.displayElement, slotObject: this.slotObject, slotHistory: this.slotHistory, class: this.display != 'slots' && 'hidden' })), this.eventObject && h("events-tab", { eventObject: this.eventObject, class: this.display != 'events' && 'hidden' }), this.accessibility && (h("accessibility-tab", { displayElement: this.displayElement, class: `tabs--accessibility${this.display != 'a11y' ? ' hidden' : ''}`, landmarkDisplay: this.landmarkDisplay, lang: this.lang })))) : null, h("gcds-sr-only", { key: 'f5feedb3ede79724bf5d7da27e5626f928de7f5b', tag: "span" }, h("span", { key: 'bea202fa94a7112c363d192dfa82679dac420731', id: "change-status", role: "status", "aria-atomic": "true", "aria-relevant": "removals" }))));
     }
     static get watchers() { return {
         "attrs": ["validateAttrs"],
@@ -36537,13 +36535,11 @@ ComponentDisplay.style = componentDisplayCss;
 
 const I18N$1 = {
   en: {
-    caption: 'Review the custom events the component emits and understand when they are triggered and what data they provide.',
     name: 'Event name',
     description: 'Description',
     details: 'Details',
   },
   fr: {
-    caption: 'Review the custom events the component emits and understand when they are triggered and what data they provide. (TODO FR)',
     name: "Nom de l'événement",
     description: 'Description',
     details: 'Details (TODO FR)',
@@ -36577,7 +36573,7 @@ const EventsTab = class {
      * --------------------------- */
     render() {
         const { lang } = this;
-        return (h(Host, { key: '4b015db9dd12f16f48699f73aec4eb63f65adcba', role: "tabpanel", tabindex: "0" }, h("table", { key: 'f54004f5e4860fbde92018d9b117d0c3205de365', class: "events" }, h("caption", { key: '1424cdd3b2e5e0c2995f99ebc5cf33bd8bc36a3d' }, I18N$1[lang].caption), h("tr", { key: '040b82322a10122266e569bf514d3ce2fbb34653' }, h("th", { key: '2750fe6d71f068ad578139860a0dd3f52bfc1126' }, I18N$1[lang].name), h("th", { key: 'b327fdaac45521fa09476d5e6c07a1d955a81c9d' }, I18N$1[lang].description), h("th", { key: '6418bc14bd78d8e019b8cf2d574e880366ae0cbc' }, I18N$1[lang].details)), this.eventObject.map(event => {
+        return (h(Host, { key: '4b015db9dd12f16f48699f73aec4eb63f65adcba', role: "tabpanel", tabindex: "0" }, h("table", { key: 'f54004f5e4860fbde92018d9b117d0c3205de365', class: "events" }, h("tr", { key: '06b96aab7f4f05076dbf66e802b334d53bf5d4b6' }, h("th", { key: 'c066e37b4f2d28d4b5442eeba6a1f73a969121b3' }, I18N$1[lang].name), h("th", { key: 'a9a3db86e1ec327a4e4bd2643bb372e555879076' }, I18N$1[lang].description), h("th", { key: '65d00eb23bd5cdcdd01218216a4a55249b652e6e' }, I18N$1[lang].details)), this.eventObject.map(event => {
             return (h("tr", { class: event.name }, h("td", { "data-label": formatDataLabel(I18N$1[lang].name, lang) }, event.name), h("td", { "data-label": formatDataLabel(I18N$1[lang].description, lang) }, event.description), h("td", { "data-label": formatDataLabel(I18N$1[lang].details, lang) }, event.details)));
         }))));
     }
@@ -37961,7 +37957,6 @@ var purify = createDOMPurify();
 
 const I18N = {
   en: {
-    caption: 'Slots allow passing text or HTML elements to the component. Modify the HTML values to update the displayed component.',
     name: 'Slot name',
     description: 'Description',
     control: 'Control',
@@ -37969,7 +37964,6 @@ const I18N = {
     slotSanitized: 'The slot content contains invalid or unsafe HTML and has been sanitized.',
   },
   fr: {
-    caption: 'Slots allow passing text or HTML elements to the component. Modify the HTML values to update the displayed component. (TODO FR)',
     name: 'Slot name (TODO FR)',
     description: 'Description',
     control: 'Contrôle',
@@ -38074,7 +38068,7 @@ const SlotsTab = class {
      * --------------------------- */
     render() {
         const { lang } = this;
-        return (h(Host, { key: '9f040a19939ee9cc84b6c96a765e93de2b43c539', role: "tabpanel", tabindex: "0" }, h("table", { key: '3642da27e526629473be7d9725d8135cc6dfda9c', class: "slots" }, h("caption", { key: '4131a8bced4641a3bf7c7e23e47aa90f73537176' }, I18N[lang].caption), h("tr", { key: '69f110e61d8bc1434119c1d26c58d3891a6e51c6' }, h("th", { key: '13b43a140a5d466e91df71e54bcb4dfa5a595d45' }, I18N[lang].name), h("th", { key: 'e5eda0f40194f857d6de22a9a41780d5ed80b9bf' }, I18N[lang].description), h("th", { key: '3fa003d97da3b77231769b7bd41d09f68cf06092' }, I18N[lang].control)), this.slotObject.map(slot => {
+        return (h(Host, { key: '3d94137d0158791a3f2206606b636bc10b50a159', role: "tabpanel", tabindex: "0" }, h("table", { key: '9d8cb73e235d2a64c1127d7c98dd6771db40c9ec', class: "slots" }, h("tr", { key: '7a5cb95dd9f89e091010f8feff0f696a5b5b3e7c' }, h("th", { key: '806ebfaab39667d709e3b2f6d875dedbe1a0c756' }, I18N[lang].name), h("th", { key: 'ecf0e503e95138324b8ce697e947c54cdcdf85a2' }, I18N[lang].description), h("th", { key: '207b80d57adfa0af91a6e306b7a1072abe1b5e80' }, I18N[lang].control)), this.slotObject.map(slot => {
             this.lastInputValue = { ...this.lastInputValue, [slot.name]: this.slotHistory[slot.name] };
             const control = (h("gcds-textarea", { label: slot.name, textareaId: slot.name, name: slot.name, hideLabel: true, value: this.slotHistory[slot.name], "error-message": this.slotErrors[slot.name], "validate-on": "other", onChange: e => this.emitSlotEvent(e), onFocus: e => this.onFocusStartInterval(e), onBlur: this.onBlurClearInterval, lang: this.lang }));
             return (h("tr", null, h("td", { "data-label": formatDataLabel(I18N[lang].name, lang) }, slot.name), h("td", { "data-label": formatDataLabel(I18N[lang].description, lang) }, slot.description), h("td", null, control)));

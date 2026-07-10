@@ -1,4 +1,4 @@
-import { A as AttributeTab$1, d as defineCustomElement$1 } from './p-BBv1qV94.js';
+import { A as AttributeTab$1, d as defineCustomElement$1 } from './p-DWlTy-bK.js';
 
 const AttributeTab = AttributeTab$1;
 const defineCustomElement = defineCustomElement$1;

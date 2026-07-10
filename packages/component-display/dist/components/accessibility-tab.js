@@ -1,4 +1,4 @@
-import { A as AccessibilityTab$1, d as defineCustomElement$1 } from './p-Co_oV2ZN.js';
+import { A as AccessibilityTab$1, d as defineCustomElement$1 } from './p-CMciTA4D.js';
 
 const AccessibilityTab = AccessibilityTab$1;
 const defineCustomElement = defineCustomElement$1;

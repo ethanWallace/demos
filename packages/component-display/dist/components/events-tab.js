@@ -1,4 +1,4 @@
-import { E as EventsTab$1, d as defineCustomElement$1 } from './p-DqYSflOG.js';
+import { E as EventsTab$1, d as defineCustomElement$1 } from './p-DjbN7xht.js';
 
 const EventsTab = EventsTab$1;
 const defineCustomElement = defineCustomElement$1;

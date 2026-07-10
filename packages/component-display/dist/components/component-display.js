@@ -1,14 +1,13 @@
 import { p as proxyCustomElement, H, h, a as Host } from './index.js';
 import { r as removeUnwantedAttributes, a as assignLanguage } from './p-BbO8WzMW.js';
-import { d as defineCustomElement$6 } from './p-Co_oV2ZN.js';
-import { d as defineCustomElement$5 } from './p-BBv1qV94.js';
+import { d as defineCustomElement$6 } from './p-CMciTA4D.js';
+import { d as defineCustomElement$5 } from './p-DWlTy-bK.js';
 import { d as defineCustomElement$4 } from './p-D5m_FF6B.js';
-import { d as defineCustomElement$3 } from './p-DqYSflOG.js';
-import { d as defineCustomElement$2 } from './p-hC5x3iiW.js';
+import { d as defineCustomElement$3 } from './p-DjbN7xht.js';
+import { d as defineCustomElement$2 } from './p-BigYrTU1.js';
 
 const I18N = {
   en: {
-    tabsHeading: 'Component API',
     tabsAttributes: 'Attributes',
     tabsSlots: 'Slots',
     tabsEvents: 'Events',
@@ -18,7 +17,6 @@ const I18N = {
     frameworkUpdateStatus: 'The code preview for "{name}" has been updated.',
   },
   fr: {
-    tabsHeading: 'Component API (TODO FR)',
     tabsAttributes: 'Attributs',
     tabsSlots: 'Fentes',
     tabsEvents: 'Événements',
@@ -240,7 +238,7 @@ const ComponentDisplay$1 = /*@__PURE__*/ proxyCustomElement(class ComponentDispl
      * --------------------------- */
     render() {
         const { lang } = this;
-        return (h(Host, { key: 'e920cc6d04392d57453ee1aaf06f4362d6461b31' }, h("code-frame", { key: '2a9bbd1131e3257f4e2d200701925f18575c05ea', source: this.codeSource, landmarkDisplay: this.landmarkDisplay, accessibility: this.accessibility, framework: this.framework, lang: this.lang }, h("slot", { key: '283320a0a37b0d06142c22e42827c587228b429a' })), this.attributeObject || this.slotObject || this.eventObject || this.accessibility ? (h("div", { id: "tabs" }, h("gcds-heading", { tag: "h4" }, I18N[lang].tabsHeading), h("div", { role: "tablist" }, this.attributeObject && (h("gcds-button", { id: "attrs", "button-role": "secondary", role: "presentation", onClick: () => this.setDisplay('attrs'), class: this.display == 'attrs' && 'selected' }, I18N[lang].tabsAttributes)), this.slotObject && (h("gcds-button", { id: "slots", "button-role": "secondary", role: "presentation", class: this.display == 'slots' && 'selected', onClick: () => this.setDisplay('slots') }, I18N[lang].tabsSlots)), this.eventObject && (h("gcds-button", { id: "events", "button-role": "secondary", role: "presentation", class: this.display == 'events' && 'selected', onClick: () => this.setDisplay('events') }, I18N[lang].tabsEvents)), this.accessibility && (h("gcds-button", { id: "a11y", "button-role": "secondary", role: "presentation", class: this.display == 'a11y' && 'selected', onClick: () => this.setDisplay('a11y') }, I18N[lang].tabsA11y))), this.attributeObject && (h("attribute-tab", { displayElement: this.displayElement, attributeObject: this.attributeObject, class: this.display != 'attrs' && 'hidden' })), this.slotObject && (h("slots-tab", { displayElement: this.displayElement, slotObject: this.slotObject, slotHistory: this.slotHistory, class: this.display != 'slots' && 'hidden' })), this.eventObject && h("events-tab", { eventObject: this.eventObject, class: this.display != 'events' && 'hidden' }), this.accessibility && (h("accessibility-tab", { displayElement: this.displayElement, class: `tabs--accessibility${this.display != 'a11y' ? ' hidden' : ''}`, landmarkDisplay: this.landmarkDisplay, lang: this.lang })))) : null, h("gcds-sr-only", { key: 'e9f0c083ffde18e3c1a7c6399f503d1beb9e7d17', tag: "span" }, h("span", { key: 'a70e2ca590b841904fffc0c855e9ec2687412c35', id: "change-status", role: "status", "aria-atomic": "true", "aria-relevant": "removals" }))));
+        return (h(Host, { key: 'e920cc6d04392d57453ee1aaf06f4362d6461b31' }, h("code-frame", { key: '2a9bbd1131e3257f4e2d200701925f18575c05ea', source: this.codeSource, landmarkDisplay: this.landmarkDisplay, accessibility: this.accessibility, framework: this.framework, lang: this.lang }, h("slot", { key: '283320a0a37b0d06142c22e42827c587228b429a' })), this.attributeObject || this.slotObject || this.eventObject || this.accessibility ? (h("div", { id: "tabs" }, h("div", { role: "tablist" }, this.attributeObject && (h("gcds-button", { id: "attrs", "button-role": "secondary", role: "presentation", onClick: () => this.setDisplay('attrs'), class: this.display == 'attrs' && 'selected' }, I18N[lang].tabsAttributes)), this.slotObject && (h("gcds-button", { id: "slots", "button-role": "secondary", role: "presentation", class: this.display == 'slots' && 'selected', onClick: () => this.setDisplay('slots') }, I18N[lang].tabsSlots)), this.eventObject && (h("gcds-button", { id: "events", "button-role": "secondary", role: "presentation", class: this.display == 'events' && 'selected', onClick: () => this.setDisplay('events') }, I18N[lang].tabsEvents)), this.accessibility && (h("gcds-button", { id: "a11y", "button-role": "secondary", role: "presentation", class: this.display == 'a11y' && 'selected', onClick: () => this.setDisplay('a11y') }, I18N[lang].tabsA11y))), this.attributeObject && (h("attribute-tab", { displayElement: this.displayElement, attributeObject: this.attributeObject, class: this.display != 'attrs' && 'hidden' })), this.slotObject && (h("slots-tab", { displayElement: this.displayElement, slotObject: this.slotObject, slotHistory: this.slotHistory, class: this.display != 'slots' && 'hidden' })), this.eventObject && h("events-tab", { eventObject: this.eventObject, class: this.display != 'events' && 'hidden' }), this.accessibility && (h("accessibility-tab", { displayElement: this.displayElement, class: `tabs--accessibility${this.display != 'a11y' ? ' hidden' : ''}`, landmarkDisplay: this.landmarkDisplay, lang: this.lang })))) : null, h("gcds-sr-only", { key: 'f5feedb3ede79724bf5d7da27e5626f928de7f5b', tag: "span" }, h("span", { key: 'bea202fa94a7112c363d192dfa82679dac420731', id: "change-status", role: "status", "aria-atomic": "true", "aria-relevant": "removals" }))));
     }
     static get watchers() { return {
         "attrs": ["validateAttrs"],

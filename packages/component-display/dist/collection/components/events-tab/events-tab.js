@@ -23,7 +23,7 @@ export class EventsTab {
      * --------------------------- */
     render() {
         const { lang } = this;
-        return (h(Host, { key: '4b015db9dd12f16f48699f73aec4eb63f65adcba', role: "tabpanel", tabindex: "0" }, h("table", { key: 'f54004f5e4860fbde92018d9b117d0c3205de365', class: "events" }, h("caption", { key: '1424cdd3b2e5e0c2995f99ebc5cf33bd8bc36a3d' }, i18n[lang].caption), h("tr", { key: '040b82322a10122266e569bf514d3ce2fbb34653' }, h("th", { key: '2750fe6d71f068ad578139860a0dd3f52bfc1126' }, i18n[lang].name), h("th", { key: 'b327fdaac45521fa09476d5e6c07a1d955a81c9d' }, i18n[lang].description), h("th", { key: '6418bc14bd78d8e019b8cf2d574e880366ae0cbc' }, i18n[lang].details)), this.eventObject.map(event => {
+        return (h(Host, { key: '4b015db9dd12f16f48699f73aec4eb63f65adcba', role: "tabpanel", tabindex: "0" }, h("table", { key: 'f54004f5e4860fbde92018d9b117d0c3205de365', class: "events" }, h("tr", { key: '06b96aab7f4f05076dbf66e802b334d53bf5d4b6' }, h("th", { key: 'c066e37b4f2d28d4b5442eeba6a1f73a969121b3' }, i18n[lang].name), h("th", { key: 'a9a3db86e1ec327a4e4bd2643bb372e555879076' }, i18n[lang].description), h("th", { key: '65d00eb23bd5cdcdd01218216a4a55249b652e6e' }, i18n[lang].details)), this.eventObject.map(event => {
             return (h("tr", { class: event.name }, h("td", { "data-label": formatDataLabel(i18n[lang].name, lang) }, event.name), h("td", { "data-label": formatDataLabel(i18n[lang].description, lang) }, event.description), h("td", { "data-label": formatDataLabel(i18n[lang].details, lang) }, event.details)));
         }))));
     }

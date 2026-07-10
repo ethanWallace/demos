@@ -1,4 +1,4 @@
-import { S as SlotsTab$1, d as defineCustomElement$1 } from './p-hC5x3iiW.js';
+import { S as SlotsTab$1, d as defineCustomElement$1 } from './p-BigYrTU1.js';
 
 const SlotsTab = SlotsTab$1;
 const defineCustomElement = defineCustomElement$1;
