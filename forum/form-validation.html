@@ -1,0 +1,470 @@
+<!doctype html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <title>Form validation - GCDS Forum - July 21st</title>
+
+    <!-- GC Design System -->
+    <link rel="stylesheet" href="../packages/components/dist/gcds/gcds.css" />
+    <script type="module" src="../packages/components/dist/gcds/gcds.esm.js"></script>
+
+    <!-- GC Design System Utility -->
+    <link rel="stylesheet" href="https://cdn.design-system.canada.ca/@gcds-core/css-shortcuts@latest/dist/gcds-css-shortcuts.min.css" />
+    
+    <!-- Prism -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.30.0/prism.min.js"></script>
+    <link rel="stylesheet" href="../assets/a11y-light.min.css" />
+
+    <style>
+      .event-light {
+        width: var(--gcds-spacing-100);
+        background: #666;
+      }
+
+      #valid-light.event-fired {
+        background-color: var(--gcds-color-green-550) !important;
+      }
+      #error-light.event-fired {
+        background-color: var(--gcds-color-red-550);
+      }
+    </style>
+
+    <script>
+      customElements.whenDefined('gcds-input').then(() => {
+        const eventInput = document.querySelector('gcds-input[input-id="event-input"]');
+        const eventStatus = document.getElementById('event-status');
+        
+        eventInput.addEventListener('gcdsValid', () => {
+          const validLight = document.getElementById('valid-light');
+          validLight.classList.add('event-fired');
+          eventStatus.textContent = 'Input is valid.';
+          setTimeout(() => {
+            validLight.classList.remove('event-fired');
+          }, 2500);
+        });
+        eventInput.addEventListener('gcdsError', () => {
+          const errorLight = document.getElementById('error-light');
+          errorLight.classList.add('event-fired');
+          eventStatus.textContent = 'Input is invalid.';
+          setTimeout(() => {
+            errorLight.classList.remove('event-fired');
+          }, 4000);
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <gcds-container layout="page" tag="main" class="pt-300">
+      <gcds-heading tag="h1">Form validation - GCDS Forum - July 21st</gcds-heading>
+
+      <section class="mb-1000 pb-1000">
+        <h2>Input validation</h2>
+
+        <p>Showing the ways a form componennt can validate in the GC Design System.</p>
+
+        <gcds-grid columns="1fr" columns-tablet="1fr 1fr">
+          <div>
+            <gcds-input
+              input-id="required-input"
+              label="Required input"
+              name="required-input"
+              hint="Required will validate."
+              required
+              size="20"
+            ></gcds-input>
+    
+<pre class="language-html">
+<code>
+&lt;gcds-input
+  input-id=&quot;required-input&quot;
+  label=&quot;Required input&quot;
+  name=&quot;required-input&quot;
+  hint=&quot;Required will validate.&quot;
+  required
+  size=&quot;20&quot;
+&gt;&lt;/gcds-input&gt;
+</code>
+</pre>
+          </div>
+
+          <div>
+            <gcds-input
+              input-id="optional-input"
+              label="Optional input"
+              name="optional-input"
+              hint="Enter a number."
+              type="number"
+              min="0"
+              step="3"
+              max="90"
+              size="3"
+            ></gcds-input>
+
+<pre class="language-html">
+<code>
+&lt;gcds-input
+  type=&quot;number&quot;
+  input-id=&quot;optional-input&quot;
+  label=&quot;optional input&quot;
+  name=&quot;optional-input&quot;
+  hint=&quot;Enter a number.&quot;
+  min=&quot;0&quot;
+  step=&quot;3&quot;
+  max=&quot;90&quot;
+  size=&quot;3&quot;
+&gt;&lt;/gcds-input&gt;
+</code>
+</pre>
+          </div>
+        </gcds-grid>
+      </section>
+
+      <section class="mb-1000 pb-1000">
+        <h2>Validate-on property</h2>
+  
+        <p>Showing when a form component can validate in the GC Design System.</p>
+  
+        <gcds-grid columns-tablet="1fr 1fr">
+        <div>
+          <form novalidate>
+            <gcds-input
+              input-id="blur-input"
+              label="Full name"
+              name="blur-input"
+              hint="This will validate when focus leaves the input."
+              validate-on="blur"
+              required
+              size="20"
+            ></gcds-input>
+
+            <gcds-input
+              input-id="submit-input"
+              label="Email"
+              name="submit-input"
+              hint="This will validate when the form submits."
+              validate-on="submit"
+              type="email"
+              required
+              size="20"
+            ></gcds-input>
+
+            <gcds-button type="submit">
+              Submit
+            </gcds-button>
+          </form>
+        </div>
+<div>
+  <pre class="language-html">
+  <code>
+  &lt;form novalidate&gt;
+    &lt;gcds-input
+      input-id=&quot;blur-input&quot;
+      label=&quot;Full name&quot;
+      name=&quot;blur-input&quot;
+      hint=&quot;This will validate when focus leaves the input.&quot;
+      validate-on=&quot;blur&quot;
+      required
+      size=&quot;20&quot;
+    &gt;&lt;/gcds-input&gt;
+  
+    &lt;gcds-input
+      input-id=&quot;submit-input&quot;
+      label=&quot;Email&quot;
+      name=&quot;submit-input&quot;
+      hint=&quot;This will validate when the form submits.&quot;
+      validate-on=&quot;submit&quot;
+      type=&quot;email&quot;
+      required
+      size=&quot;20&quot;
+    &gt;&lt;/gcds-input&gt;
+  
+    &lt;gcds-button type=&quot;submit&quot;&gt;
+      Submit
+    &lt;/gcds-button&gt;
+  &lt;/form&gt;
+  </code>
+  </pre>
+</div>
+</gcds-grid>
+      </section>
+
+      <section class="mb-1000 pb-1000">
+        <h2>Custom validation events</h2>
+  
+        <p>Showing the custom validation events emitted from form components in the GC Design System.</p>
+  
+        <gcds-grid columns="1fr" columns-tablet="1fr 1fr">
+          <div>
+            <gcds-input
+              input-id="event-input"
+              label="Events input"
+              name="event-input"
+              hint="The events of this input are being tracked."
+              required
+              size="20"
+            ></gcds-input>
+          </div>
+          <div class="b-solid p-200">
+            <h3 class="mt-100">Event tracker</h3>
+
+            <div class="d-grid grid-cols-2 gap-100">
+              <div class="p-200 b-solid b-radius-md bg-disabled d-grid grid-cols-2 gap-100">
+                <div id="valid-light" class="event-light b-solid p-200 b-radius-xl">
+  
+                </div>
+                <p class="m-0"><strong>gcdsValid</strong></p>
+              </div>
+              <div class="p-200 b-solid b-radius-md bg-disabled d-grid grid-cols-2 gap-100">
+                <div id="error-light" class="event-light b-solid p-200 b-radius-xl">
+  
+                </div>
+                <p class="m-0"><strong>gcdsError</strong></p>
+              </div>
+              <span
+                role="status"
+                aria-atomic="true"
+              >
+                <span id="event-status"></span>
+              </span>
+            </div>
+          </div>
+        </gcds-grid>
+<pre class="language-html">
+<code>
+&lt;gcds-input
+  input-id=&quot;event-input&quot;
+  label=&quot;Events input&quot;
+  name=&quot;event-input&quot;
+  hint=&quot;The events of this input are being tracked.&quot;
+  required
+  size=&quot;20&quot;
+&gt;&lt;/gcds-input&gt;
+
+&lt;script&gt;
+  customElements.whenDefined(&#39;gcds-input&#39;).then(() =&gt; {
+    const eventInput = document.querySelector(&#39;gcds-input[input-id=&quot;event-input&quot;]&#39;);
+    
+    eventInput.addEventListener(&#39;gcdsValid&#39;, () =&gt; {
+      ...
+    });
+    eventInput.addEventListener(&#39;gcdsError&#39;, () =&gt; {
+      ...
+    });
+  });
+&lt;/script&gt;
+</code>
+</pre>
+      </section>
+
+      <section class="mb-1000 pb-1000">
+        <h2>Custom validation (Advanced use case)</h2>
+  
+        <p>Showing custom validation for form components in the GC Design System.</p>
+  
+        <gcds-input
+          input-id="form-name"
+          label="Name of component library"
+          hint="Please enter '@gcds-core/components' to continue."
+          name="library-name"
+          required
+          size="20"
+        ></gcds-input>
+
+        <script>
+          const input = document.querySelector('gcds-input[name="library-name"]');
+
+          const libraryName = () => {
+            return {
+              validate: value => {
+              return {
+                valid: value === '@gcds-core/components',
+                reason: {
+                  en: `The entered value must be '@gcds-core/components'.`,
+                  fr: `La valeur saisie doit être « @gcds-core/components ».`,
+                },
+              };
+              },
+            };
+          };
+
+          input.validator = [libraryName()];
+        </script>
+
+<pre class="language-html">
+<code>
+&lt;gcds-input
+  input-id=&quot;form-name&quot;
+  label=&quot;Name of component library&quot;
+  hint=&quot;Please enter &#39;@gcds-core/components&#39; to continue.&quot;
+  name=&quot;library-name&quot;
+  required
+  size=&quot;20&quot;
+&gt;&lt;/gcds-input&gt;
+
+&lt;script&gt;
+  const input = document.querySelector(&#39;gcds-input[name=&quot;library-name&quot;]&#39;);
+
+  const libraryName = () =&gt; {
+    return {
+      validate: value =&gt; {
+      return {
+        valid: value === &#39;@gcds-core/components&#39;,
+        reason: {
+          en: `The entered value must be &#39;@gcds-core/components&#39;.`,
+          fr: `La valeur saisie doit être « @gcds-core/components ».`,
+        },
+      };
+      },
+    };
+  };
+
+  input.validator = [libraryName()];
+&lt;/script&gt;
+</code>
+</pre>
+
+        <gcds-checkboxes
+          legend="Checkboxes example"
+          name="checkexample"
+          hint="Please select only two checkboxes to continue."
+          required
+          options='[
+            {"id": "form-check-1", "label": "Checkbox 1", "value": "check1"},
+            {"id": "form-check-2", "label": "Checkbox 2", "value": "check2"},
+            {"id": "form-check-3", "label": "Checkbox 3", "value": "check3"},
+            {"id": "form-check-4", "label": "Checkbox 4", "value": "check4"}
+          ]'>
+        </gcds-checkboxes>
+
+        <script>
+          const checkboxes = document.querySelector('gcds-checkboxes[name="checkexample"]');
+
+          const checkboxesValidator = (count) => {
+            return {
+              validate: value => {
+                return {
+                  valid: value.length === count,
+                  reason: {
+                    en: `Please select two checkboxes to continue.`,
+                    fr: `Veuillez sélectionner deux cases à cocher pour continuer.`,
+                  },
+                };
+              },
+            };
+          };
+
+          checkboxes.validator = [checkboxesValidator(2)];
+        </script>
+
+<pre class="language-html">
+<code>
+&lt;gcds-checkboxes
+  legend=&quot;Checkboxes example&quot;
+  name=&quot;checkexample&quot;
+  hint=&quot;Please select only two checkboxes to continue.&quot;
+  required
+  options=&#39;[
+    {&quot;id&quot;: &quot;form-check-1&quot;, &quot;label&quot;: &quot;Checkbox 1&quot;, &quot;value&quot;: &quot;check1&quot;},
+    {&quot;id&quot;: &quot;form-check-2&quot;, &quot;label&quot;: &quot;Checkbox 2&quot;, &quot;value&quot;: &quot;check2&quot;},
+    {&quot;id&quot;: &quot;form-check-3&quot;, &quot;label&quot;: &quot;Checkbox 3&quot;, &quot;value&quot;: &quot;check3&quot;},
+    {&quot;id&quot;: &quot;form-check-4&quot;, &quot;label&quot;: &quot;Checkbox 4&quot;, &quot;value&quot;: &quot;check4&quot;}
+  ]&#39;&gt;
+&lt;/gcds-checkboxes&gt;
+
+&lt;script&gt;
+  const checkboxes = document.querySelector(&#39;gcds-checkboxes[name=&quot;checkexample&quot;]&#39;);
+
+  const checkboxesValidator = (count) =&gt; {
+    return {
+      validate: value =&gt; {
+        return {
+          valid: value.length === count,
+          reason: {
+            en: `Please select two checkboxes to continue.`,
+            fr: `Veuillez sélectionner deux cases à cocher pour continuer.`,
+          },
+        };
+      },
+    };
+  };
+
+  checkboxes.validator = [checkboxesValidator(2)];
+&lt;/script&gt;
+</code>
+</pre>
+
+        <gcds-checkboxes
+          legend="Checkboxes example 2"
+          name="checkexampletwo"
+          hint="Please select all to continue"
+          required
+          options='[
+            {"id": "form-check-1", "label": "Checkbox 1", "value": "check1"},
+            {"id": "form-check-2", "label": "Checkbox 2", "value": "check2"},
+            {"id": "form-check-3", "label": "Checkbox 3", "value": "check3"},
+            {"id": "form-check-4", "label": "Checkbox 4", "value": "check4"}
+          ]'>
+        </gcds-checkboxes>
+
+        <script>
+          const checkboxesTwo = document.querySelector('gcds-checkboxes[name="checkexampletwo"]');
+
+          const checkboxesValidatorTwo = () => {
+            return {
+              validate: value => {
+                return {
+                  valid: value.length === 4,
+                  reason: {
+                    en: `Please select all checkboxes to continue.`,
+                    fr: `Veuillez sélectionner toutes les cases à cocher pour continuer.`,
+                  },
+                };
+              },
+            };
+          };
+
+          checkboxesTwo.validator = [checkboxesValidatorTwo()];
+        </script>
+
+<pre class="language-html">
+<code>
+&lt;gcds-checkboxes
+  legend=&quot;Checkboxes example 2&quot;
+  name=&quot;checkexampletwo&quot;
+  hint=&quot;Please select all to continue&quot;
+  required
+  options=&#39;[
+    {&quot;id&quot;: &quot;form-check-1&quot;, &quot;label&quot;: &quot;Checkbox 1&quot;, &quot;value&quot;: &quot;check1&quot;},
+    {&quot;id&quot;: &quot;form-check-2&quot;, &quot;label&quot;: &quot;Checkbox 2&quot;, &quot;value&quot;: &quot;check2&quot;},
+    {&quot;id&quot;: &quot;form-check-3&quot;, &quot;label&quot;: &quot;Checkbox 3&quot;, &quot;value&quot;: &quot;check3&quot;},
+    {&quot;id&quot;: &quot;form-check-4&quot;, &quot;label&quot;: &quot;Checkbox 4&quot;, &quot;value&quot;: &quot;check4&quot;}
+  ]&#39;&gt;
+&lt;/gcds-checkboxes&gt;
+
+&lt;script&gt;
+  const checkboxesTwo = document.querySelector(&#39;gcds-checkboxes[name=&quot;checkexampletwo&quot;]&#39;);
+
+  const checkboxesValidatorTwo = () =&gt; {
+    return {
+      validate: value =&gt; {
+        return {
+          valid: value.length === 4,
+          reason: {
+            en: `Please select all checkboxes to continue.`,
+            fr: `Veuillez sélectionner toutes les cases à cocher pour continuer.`,
+          },
+        };
+      },
+    };
+  };
+
+  checkboxesTwo.validator = [checkboxesValidatorTwo()];
+&lt;/script&gt;
+</code>
+</pre>
+
+      </section>
+    </gcds-container>
+  </body>
+</html>
