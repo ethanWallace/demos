@@ -61,7 +61,7 @@
       <section class="mb-1000 pb-1000">
         <h2>Input validation</h2>
 
-        <p>Showing the ways a form componennt can validate in the GC Design System.</p>
+        <p>Showing the ways a form component can validate in the GC Design System.</p>
 
         <gcds-grid columns="1fr" columns-tablet="1fr 1fr">
           <div>
@@ -410,11 +410,11 @@
         <script>
           const checkboxesTwo = document.querySelector('gcds-checkboxes[name="checkexampletwo"]');
 
-          const checkboxesValidatorTwo = () => {
+          const selectAllValidator = (count) => {
             return {
               validate: value => {
                 return {
-                  valid: value.length === 4,
+                  valid: value.length === count,
                   reason: {
                     en: `Please select all checkboxes to continue.`,
                     fr: `Veuillez sélectionner toutes les cases à cocher pour continuer.`,
@@ -424,7 +424,7 @@
             };
           };
 
-          checkboxesTwo.validator = [checkboxesValidatorTwo()];
+          checkboxesTwo.validator = [selectAllValidator(4)];
         </script>
 
 <pre class="language-html">
@@ -445,11 +445,11 @@
 &lt;script&gt;
   const checkboxesTwo = document.querySelector(&#39;gcds-checkboxes[name=&quot;checkexampletwo&quot;]&#39;);
 
-  const checkboxesValidatorTwo = () =&gt; {
+  const selectAllValidator = (count) =&gt; {
     return {
       validate: value =&gt; {
         return {
-          valid: value.length === 4,
+          valid: value.length === count,
           reason: {
             en: `Please select all checkboxes to continue.`,
             fr: `Veuillez sélectionner toutes les cases à cocher pour continuer.`,
@@ -459,7 +459,7 @@
     };
   };
 
-  checkboxesTwo.validator = [checkboxesValidatorTwo()];
+  checkboxesTwo.validator = [selectAllValidator(4)];
 &lt;/script&gt;
 </code>
 </pre>
