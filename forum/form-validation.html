@@ -340,11 +340,11 @@
         <script>
           const checkboxes = document.querySelector('gcds-checkboxes[name="checkexample"]');
 
-          const checkboxesValidator = (count) => {
+          const checkboxesValidator = () => {
             return {
               validate: value => {
                 return {
-                  valid: value.length === count,
+                  valid: value.length === 2,
                   reason: {
                     en: `Please select two checkboxes to continue.`,
                     fr: `Veuillez sélectionner deux cases à cocher pour continuer.`,
@@ -354,7 +354,7 @@
             };
           };
 
-          checkboxes.validator = [checkboxesValidator(2)];
+          checkboxes.validator = [checkboxesValidator()];
         </script>
 
 <pre class="language-html">
@@ -375,11 +375,11 @@
 &lt;script&gt;
   const checkboxes = document.querySelector(&#39;gcds-checkboxes[name=&quot;checkexample&quot;]&#39;);
 
-  const checkboxesValidator = (count) =&gt; {
+  const checkboxesValidator = () =&gt; {
     return {
       validate: value =&gt; {
         return {
-          valid: value.length === count,
+          valid: value.length === 2,
           reason: {
             en: `Please select two checkboxes to continue.`,
             fr: `Veuillez sélectionner deux cases à cocher pour continuer.`,
@@ -389,7 +389,7 @@
     };
   };
 
-  checkboxes.validator = [checkboxesValidator(2)];
+  checkboxes.validator = [checkboxesValidator()];
 &lt;/script&gt;
 </code>
 </pre>
